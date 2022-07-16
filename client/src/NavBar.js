@@ -10,7 +10,7 @@ const NavBar = () => {
   return (
    <>
       <Logo>
-        <Link to="/"> AnthologyApp </Link>
+        <Link to="/"> My Closet App </Link>
       </Logo>
       <br/>
       <Wrapper>
@@ -56,7 +56,7 @@ const NavBar = () => {
               <Button as={Link} to="/login">
               Login
               </Button>
-              
+
               <Button as={Link} to="/signup">
               Signup
               </Button>
