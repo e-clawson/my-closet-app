@@ -23,15 +23,30 @@ const NavBar = () => {
         </Button>
         {user ? (
           <>
-            <Button as={Link} to="/newprompt">
-              New Prompt
-            </Button>
-            <Button as={Link} to="/newstory">
-              New Story
-            </Button>
             <Button as={Link} to="/profile">
               My Profile
             </Button>
+
+            <Button as={Link} to="/newitem">
+              New Item
+            </Button>
+
+            <Button as={Link} to="/newoutfit">
+              New Outfit
+            </Button>
+
+            <Button as={Link} to="/newoutfit">
+              New Collection
+            </Button>
+
+            <Button as={Link} to="/outfits">
+              My Outfits
+            </Button>
+
+            <Button as={Link} to="/collections">
+              My Collections
+            </Button>
+
             <Button as={Link} to="/logout">
               Logout
             </Button>
@@ -41,6 +56,7 @@ const NavBar = () => {
               <Button as={Link} to="/login">
               Login
               </Button>
+              
               <Button as={Link} to="/signup">
               Signup
               </Button>
