@@ -5,8 +5,8 @@ class SessionsController < ApplicationController
         user = User.find_by_email(params[:email])
         if user&.authenticate(params[:password])
             session[:user_id] = user.id #line responsible for signing user in 
-            render json: user, status: :accepted
-            #render json: UserSerializer.new(user), status: :accepted
+            # render json: user, status: :accepted
+            render json: UserSerializer.new(user), status: :accepted
         else
             render json: {error: "Not Authorized"}, status: :unauthorized
        end
