@@ -24,3 +24,6 @@ Things you may want to cover:
 * ...
 
 * Styled-components 
+* Dotenv - https://github.com/bkeepers/dotenv 
+* Google OmniAuth - 
+* Helpfukl Google OmniAuth Info - https://medium.com/@jenn.leigh.hansen/google-oauth2-for-rails-ba1bcfd1b863 
