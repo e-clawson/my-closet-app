@@ -34,45 +34,65 @@ To view a video walkthough of the app, please follow this link:
 
 LINK TO VIDEO WALKTHROUGH GOES HERE 
 
-## Acknowledgements 
+## Acknowledgements and Additional Information 
 
 A special thank you to Matteo Piccini, Madeline Stark, and Flatiron School for teaching me to code, and advising me with throughout the completion of this project. Thank you to my friends and network of software engineers that help me when I get stuck, and encourage me to keep going when I am frustrated.  
 
-Sign-in page courtesy of Mui React templates and can be found here: 
-https://github.com/mui/material-ui/tree/v5.7.0/docs/data/material/getting-started/templates/sign-in 
+# Learn More (additional Infmormation)
 
-Additional information about Material UI, including installation, can be found on the website here: 
+* Sign-in page courtesy of Mui React templates and can be found here: https://github.com/mui/material-ui/tree/v5.7.0/docs/data/material/getting-started/templates/sign-in 
+
+* Additional information about Material UI, including installation, can be found on the website here: 
 https://mui.com/material-ui/getting-started/installation/ 
 
-Additional information on Google OmniAuth can be found here: 
+* Link to Google Cloud Resource Manager can be found here: 
+https://console.cloud.google.com/cloud-resource-manager 
 
-LINK TO GOOGLE OMNIAUTH
+* Helpful blog about utilizing Google OmniAuth can be found here, courtesy of Jenn Leigh Hansen - https://medium.com/@jenn.leigh.hansen/google-oauth2-for-rails-ba1bcfd1b863
 
-    (Helpful blog about utilizing Google OmniAuth can be found here, courtesy of Jenn Leigh Hansen - https://medium.com/@jenn.leigh.hansen/google-oauth2-for-rails-ba1bcfd1b863)
+* Styled-Components can be found here: 
+https://styled-components.com/ 
+
+* Dotenv can be found here: 
+https://github.com/bkeepers/dotenv 
+
+*  Helpful blog post on using activestorage in rails: 
+https://pragmaticstudio.com/tutorials/using-active-storage-in-rails 
+
+* react-google-login - https://www.npmjs.com/package/react-google-login 
+
 
 ### Set-up Information 
 
-* Ruby version
+* Ruby version - 
 
 * System dependencies
+    "dependencies": {
+        "@emotion/react": "^11.9.3",
+        "@emotion/styled": "^11.9.3",
+        "@mui/icons-material": "^5.8.4",
+        "@mui/material": "^5.9.1",
+        "react-router-dom": "^6.3.0",
+        "styled-components": "^5.3.5"
+  }
 
 * Configuration
 
-* Database creation
+    to set-up locally run the following: 
+    
+    bundle install
+    rails db:create db:migrate db:seed
+    rails s 
+    npm install --prefix client
+
+<!-- * Database creation
 
 * Database initialization
 
-* How to run the test suite
+* How to run the test suite -->
 
 * Services (job queues, cache servers, search engines, etc.)
 
 * Deployment instructions
 
-* ...
-
-* Styled-components 
-* Dotenv - https://github.com/bkeepers/dotenv 
-* Google OmniAuth - 
-* mui https://mui.com/
-* Helpful blog post on using activestorage in rails https://pragmaticstudio.com/tutorials/using-active-storage-in-rails 
-* react-google-login - https://www.npmjs.com/package/react-google-login 
+* other 
