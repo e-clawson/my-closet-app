@@ -10,6 +10,7 @@ import Home from "./Home";
 import Login from "./user/Login";
 import Logout from "./user/Logout";
 import Profile from "./user/Profile";
+import Signup from "./user/Signup";
 
 
 function App() {
@@ -39,7 +40,7 @@ function App() {
               <Profile /> 
             </Route>
             <Route path="/signup">
-              {/* <SignUpForm /> */}
+              <Signup />
             </Route>
             <Route path="/newprompt">
               {/* <PromptForm /> */}

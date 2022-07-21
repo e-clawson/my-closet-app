@@ -20,6 +20,8 @@ import { UserContext } from '../../context/user';
 import { useContext, useState } from 'react';
 import { MessageContext } from '../../context/message';
 import { useHistory } from 'react-router-dom';
+import SignUp from './Signup';
+
 
 
 function Copyright(props) {
@@ -125,13 +127,13 @@ export default function SignIn() {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="/signup" variant="body2">
+                <Link href="/Signup" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
             </Grid>
           </Box>
-        </Box>w
+        </Box>
         <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
     </ThemeProvider>
