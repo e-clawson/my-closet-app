@@ -148,18 +148,13 @@ const Signup = () => {
                       value={userObj.passwordConfirmation}
                     />
                   </Grid>
-                  <Grid item xs={12}>
-                    <FormControlLabel
-                      control={<Checkbox value="allowExtraEmails" color="primary" />}
-                      label="I want to receive inspiration, marketing promotions and updates via email."
-                    />
-                  </Grid>
                 </Grid>
                 <Button
                   type="submit"
                   fullWidth
                   variant="contained"
                   sx={{ mt: 3, mb: 2 }}
+                  href ="/profile"
                 >
                   Sign Up
                 </Button>
