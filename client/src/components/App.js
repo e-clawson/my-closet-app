@@ -8,6 +8,7 @@ import Notification from "./Notification";
 import About from "./About";
 import Home from "./Home";
 import Login from "./user/Login";
+import Logout from "./user/Logout";
 
 
 function App() {
@@ -31,7 +32,7 @@ function App() {
              <Login /> 
             </Route>
             <Route path="/logout">
-              {/* <Logout />  */}
+              <Logout /> 
             </Route>
             <Route path="/profile">
               {/* <Profile />  */}
