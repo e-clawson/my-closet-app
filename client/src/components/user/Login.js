@@ -19,23 +19,10 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { UserContext } from '../../context/user';
 import { useContext, useState } from 'react';
 import { MessageContext } from '../../context/message';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Redirect } from 'react-router-dom';
 import SignUp from './Signup';
+import {GoogleLogin} from 'react-google-login';
 
-
-
-function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
 
 const theme = createTheme();
 
@@ -63,6 +50,35 @@ export default function SignIn() {
         history.push("/profile")
     }
 };
+
+const responseGoogle = (response) => {
+  const requestOptions = {
+      method: 'POST',
+      headers: {
+          // 'Authorization': `Bearer ${response.Zi.accessToken}`,
+          'Content-Type': 'application/json',
+          // 'access_token': `${response.Zi.accessToken}`
+      },
+      body: JSON.stringify(response)
+  }
+  fetch(`/api/v1/auth/:provider/callback`, requestOptions)
+  .then(res => {
+    if (res.ok) {
+      res.json().then(data => {
+        setUser({...data.data.attributes, posts: data.data.relationships.posts.data})
+        setMessage({message: "User successfully logged in", color: "green"})
+      })
+    }
+    else {
+      res.json().then(data => {
+        setMessage({message: data.error, color: "red"})
+      })
+    }
+  })
+  .catch(err => setMessage({message: err.message, color: "red"}))
+}
+
+if (user) return <Redirect to="/profile" />
 
   return (
     <ThemeProvider theme={theme}>
@@ -120,6 +136,7 @@ export default function SignIn() {
             >
               Sign In
             </Button>
+            <GoogleLogin height="10" width="1000px" backgroundColor="#4285f4" clientId="781784725438-7rjsrk7bn41r6cpif9h55ur6u0cep7d5.apps.googleusercontent.com" access="offline" scope="email profile" onSuccess={responseGoogle} onFailure={responseGoogle}/>
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">
@@ -134,7 +151,6 @@ export default function SignIn() {
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
     </ThemeProvider>
   );

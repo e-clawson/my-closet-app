@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
       #will be a get and not post -
       #This route will direct any auth callback response to our SessionsController omniauth action with params[:provider] set to google_oauth2 in this example.
-      get "/auth/:provider/callback", to: "sessions#omniauth"
+      post "/auth/:provider/callback", to: "sessions#omniauth"
 
       resources :users, only: [:update, :destroy] #creating show route manually with a custom route
       post "/signup", to: "users#create"
