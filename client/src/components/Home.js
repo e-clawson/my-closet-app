@@ -6,7 +6,8 @@ const Home = () => {
     <div> 
       <Wrapper>
         <h2>Homepage</h2>
-
+     </Wrapper>
+     <Wrapper>
         <h3> This is the Homepage When you're logged in you will see a
             List of outfits here and a list of collections here.</h3>
       </Wrapper>

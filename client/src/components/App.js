@@ -7,6 +7,7 @@ import NavBar from "./NavBar";
 import Notification from "./Notification";
 import About from "./About";
 import Home from "./Home";
+import Login from "./user/Login";
 
 
 function App() {
@@ -27,7 +28,7 @@ function App() {
               <About /> 
             </Route>
             <Route path="/login">
-             {/* <Login />  */}
+             <Login /> 
             </Route>
             <Route path="/logout">
               {/* <Logout />  */}
