@@ -4,13 +4,13 @@ const About = () => {
     return (
       <div>
         <Wrapper>
-        <h1>About AnthologyApp</h1>
+        <h1>About MyCloset App</h1>
         </Wrapper>
         <Wrapper>
-          <p>AnthologyApp is a place for short story writers to share their ideas with the world! 
-        Users can view short story prompts created by the AnthologyApp community, create their own short
-        stories based on prompts, and share their own short story prompt ideas with others! Get your 
-        creative writing ideas flowing and share with a supportive and like-minded writing community! </p>
+          <p>Designed to save you from asking, "what should I wear today?" and "I don't have any good outfits!" 
+            With My Closet App, you can upload pictures of clothing items, jewelry, and accessories from 
+            your own closet and orgnize these into outfits! Then you can add these outfits into collections by type
+             - you choose the type (for example, "work wear," "summer outfits," "fancy outfits," etc.")</p>
         </Wrapper>
        </div>
     )
