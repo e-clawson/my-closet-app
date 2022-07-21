@@ -9,6 +9,7 @@ import About from "./About";
 import Home from "./Home";
 import Login from "./user/Login";
 import Logout from "./user/Logout";
+import Profile from "./user/Profile";
 
 
 function App() {
@@ -35,7 +36,7 @@ function App() {
               <Logout /> 
             </Route>
             <Route path="/profile">
-              {/* <Profile />  */}
+              <Profile /> 
             </Route>
             <Route path="/signup">
               {/* <SignUpForm /> */}
