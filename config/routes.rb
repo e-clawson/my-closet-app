@@ -18,6 +18,12 @@ Rails.application.routes.draw do
       post "/login", to: "sessions#create"
       delete "/logout", to: "sessions#destroy"
 
+      resources :items, only: [:index, :create]
+      resources :outfits, only: [:index, :create]
+
+      # Need to figure out how to create routes for item_outfits
+      # (and what routes I need for item_outfits)
+    
     end
   end
 end
