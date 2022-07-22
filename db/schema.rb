@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_21_094127) do
+ActiveRecord::Schema.define(version: 2022_07_22_083336) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,7 +49,24 @@ ActiveRecord::Schema.define(version: 2022_07_21_094127) do
     t.string "size"
     t.string "color"
     t.string "description"
-    t.integer "user_id"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_items_on_user_id"
+  end
+
+  create_table "outfit_items", force: :cascade do |t|
+    t.bigint "outfit_id"
+    t.bigint "item_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["item_id"], name: "index_outfit_items_on_item_id"
+    t.index ["outfit_id"], name: "index_outfit_items_on_outfit_id"
+  end
+
+  create_table "outfits", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

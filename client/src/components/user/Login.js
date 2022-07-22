@@ -1,7 +1,5 @@
 // Anywhere that you want to add the option for a user to “Log in with Google”, you will want to add this code to your view file:
 
-// <%= button_to "Log in with Google", '/auth/google_oauth2'  %>
-
 import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -136,7 +134,7 @@ if (user) return <Redirect to="/profile" />
             >
               Sign In
             </Button>
-            <GoogleLogin height="10" width="1000px" backgroundColor="#4285f4" clientId="781784725438-7rjsrk7bn41r6cpif9h55ur6u0cep7d5.apps.googleusercontent.com" access="offline" scope="email profile" onSuccess={responseGoogle} onFailure={responseGoogle}/>
+            <GoogleLogin height="10" width="500px" backgroundColor="#4285f4" clientId="781784725438-7rjsrk7bn41r6cpif9h55ur6u0cep7d5.apps.googleusercontent.com" access="offline" scope="email profile" onSuccess={responseGoogle} onFailure={responseGoogle}/>
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">
