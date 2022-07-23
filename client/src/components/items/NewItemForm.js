@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useHistory } from "react-router-dom"
 import { Button, Input, FormField, Label } from "../../styles";
+import Container from '@mui/material/Container';
 
 const ItemForm = () => {
   const [item, setItem] = useState({
@@ -47,6 +48,7 @@ const ItemForm = () => {
 
   return (
     <>
+      <Container component="main" maxWidth="xs">  
       <h3>Add A New Item to Your Wardrobe!</h3>
       <form onSubmit={handleSubmit}>
       <FormField>
@@ -58,8 +60,8 @@ const ItemForm = () => {
           value={setItem.name}
           onChange={handleChange}
         />
-        </FormField>
-        <FormField>
+         </FormField>
+         <FormField>
         <Label htmlFor="type">Item Type</Label>
         <Input
           type="text"
@@ -71,7 +73,7 @@ const ItemForm = () => {
         </FormField>
         <FormField>
         <Label htmlFor="size">Size</Label>
-        <h4>(If the item is not a sized item, please enter NA)</h4>
+        <h5>(If the item is not a sized item, please enter NA)</h5>
         <Input
           type="text"
           name="size"
@@ -100,11 +102,11 @@ const ItemForm = () => {
           onChange={handleChange}
         />
          </FormField>
-
       <FormField>
         <Button type="submit">Submit Item</Button>
       </FormField>
     </form>
+    </Container>
     </>
   )
 }
