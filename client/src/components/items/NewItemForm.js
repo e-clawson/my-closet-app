@@ -6,7 +6,7 @@ import Container from '@mui/material/Container';
 const ItemForm = () => {
   const [item, setItem] = useState({
       name: "",
-      type: "",
+      item_type: "",
       size: "",
       color: "",
       description: "",
@@ -23,14 +23,14 @@ const ItemForm = () => {
 
   const handleSubmit = e => {
       e.preventDefault()
-      if ([item.name, item.type, item.size, item.color, item.description].some(val => val.trim() === "")) {
+      if ([item.name, item.item_type, item.size, item.color, item.description].some(val => val.trim() === "")) {
         alert("Please provide all the requested information")
       }
       history.push("/home")
 
   const newItem = {
       name: item.name,
-      type: item.type,
+      type: item.item_type,
       size: item.size,
       color: item.color,
       description: item.description,
@@ -62,12 +62,12 @@ const ItemForm = () => {
         />
          </FormField>
          <FormField>
-        <Label htmlFor="type">Item Type</Label>
+        <Label htmlFor="item_type">Item Type</Label>
         <Input
           type="text"
-          name="type"
+          name="item type"
           autoComplete="off"
-          value={setItem.type}
+          value={setItem.item_type}
           onChange={handleChange}
         />
         </FormField>

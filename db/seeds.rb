@@ -11,5 +11,5 @@ caitlin = User.create(first_name: "Caitlin", last_name: "Baker", password:"12345
 laksh = User.create(first_name: "Laksh", last_name: "Khurana", password:"123456", email: "lakshkhurana3@gmail.com")
 aiden = User.create(first_name: "Aiden", last_name: "Baker", password:"123456", email: "aiden@gmail.com")
 
-i1 = Item.create(name: "Black Skinny Jeans", type: "Pants", size: "14", color: "black", description: "My favorite Jeans!", user_id: 1)
-i2 = Item.create(name: "Dark Blue Floral Top", type: "Shirt", size: "L", color: "Navy Blue", description: "Sleeveless navy blue top with a red floral pattern", user_id: 1)
+i1 = Item.create(name:"Black Skinny Jeans", item_type:"Pants", size:"14", color:"black", description:"My favorite Jeans!", user_id: 1)
+i2 = Item.create(name:"Dark Blue Floral Top", item_type:"Shirt", size:"L", color:"Navy Blue", description:"Sleeveless navy blue top with a red floral pattern", user_id: 1)
