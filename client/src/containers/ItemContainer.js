@@ -11,7 +11,6 @@ const ItemContainer = () => {
         .then(data => setItems(data.data.map(p => p.attributes)))
         .catch(err => alert(err))  
     }, []);
-    console.log(items)
 
   return (
     <>

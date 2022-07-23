@@ -9,7 +9,9 @@ const ItemCard = ({item}) => {
             <h4>Size: {item.size}</h4>
             <h4>Color: {item.color}</h4>
             <h4>Description: {item.description}</h4>
-            {/* <button>Favorite 💖</button> */}
+            <button>Add to Outfit</button>
+            <button>Edit</button>
+            <button>Delete</button>
         </div>
     )
 }
