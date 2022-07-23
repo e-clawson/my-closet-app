@@ -11,6 +11,7 @@ import Login from "./user/Login";
 import Logout from "./user/Logout";
 import Profile from "./user/Profile";
 import Signup from "./user/Signup";
+import ItemForm from "./items/NewItemForm";
 
 
 function App() {
@@ -42,8 +43,8 @@ function App() {
             <Route path="/signup">
               <Signup />
             </Route>
-            <Route path="/newprompt">
-              {/* <PromptForm /> */}
+            <Route path="/newitem">
+              <ItemForm />
             </Route>
             <Route path="/newstory">
               {/* <StoryForm /> */}
