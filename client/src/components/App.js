@@ -1,7 +1,7 @@
-import { useState, useEffect, useContext } from "react";
+import { useEffect, useContext } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Header from "./Header";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { UserContext } from "../context/user";
 import NavBar from "./NavBar";
 import Notification from "./Notification";

@@ -18,7 +18,7 @@ import { UserContext } from '../../context/user';
 import { useContext, useState } from 'react';
 import { MessageContext } from '../../context/message';
 import { useHistory, Redirect } from 'react-router-dom';
-import SignUp from './Signup';
+// import Signup from './Signup';
 import {GoogleLogin} from 'react-google-login';
 
 
