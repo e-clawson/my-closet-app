@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../styles/Button"
 import { UserContext } from "../context/user";
+import Header from "./Header";
 
 const NavBar = () => {
   const {user} = useContext(UserContext)
@@ -12,6 +13,7 @@ const NavBar = () => {
       <Logo>
         <Link to="/"> My Closet App </Link>
       </Logo>
+      <Header slogan="Organize your closet!"/>
       <br/>
       <Wrapper>
       <Nav>

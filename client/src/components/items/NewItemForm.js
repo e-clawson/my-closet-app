@@ -29,8 +29,8 @@ const ItemForm = () => {
       history.push("/home")
 
   const newItem = {
-      name: item.name,
-      type: item.item_type,
+      name: item.item_name,
+      item_type: item.item_type,
       size: item.size,
       color: item.color,
       description: item.description,
@@ -57,7 +57,7 @@ const ItemForm = () => {
           type="text"
           name="name"
           autoComplete="off"
-          value={setItem.name}
+          value={setItem.item_name}
           onChange={handleChange}
         />
          </FormField>

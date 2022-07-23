@@ -26,7 +26,6 @@ function App() {
       <Router>
         <Notification/>
         <NavBar />
-        <Header slogan="Organize your closet!"/>
           <Switch>
             <Route path="/about">
               <About /> 

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import ItemList from "../components/items/ItemList";
+import styled from "styled-components";
 
 
 const ItemContainer = () => {
@@ -14,11 +15,21 @@ const ItemContainer = () => {
 
   return (
     <>
-        <h2>My Items</h2>
+        <Wrapper>
+            <h2>My Items</h2>
+        </Wrapper>
         <ItemList items={items} />
     </>
 
   )
 }
+
+const Wrapper = styled.header`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+`;
+
 
 export default ItemContainer;

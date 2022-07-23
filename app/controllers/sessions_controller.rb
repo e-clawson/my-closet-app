@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-    skip_before_action :authorized!, only: [:create]
+    skip_before_action :authorized!, only: [:create, :omniauth]
 
     def omniauth
         auth = {email: params["Lu"]["Bv"], uid: params["profileObj"]["googleId"], provider: params["provider"]}

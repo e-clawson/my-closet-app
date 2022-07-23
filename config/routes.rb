@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   scope :api do
     scope :v1 do
 
-      #will be a get and not post -
+      #will be a get and not post?
       #This route will direct any auth callback response to our SessionsController omniauth action with params[:provider] set to google_oauth2 in this example.
       post "/auth/:provider/callback", to: "sessions#omniauth"
 
