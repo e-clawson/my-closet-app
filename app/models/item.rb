@@ -11,7 +11,7 @@ class Item < ApplicationRecord
     #image validations
     validate :acceptable_image
 
-    def acceptable_image
+    def acceptable_image 
         return unless item_image.attached?
       
         unless item_image.byte_size <= 1.megabyte
