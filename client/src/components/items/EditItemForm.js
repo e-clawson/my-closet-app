@@ -16,6 +16,7 @@ const EditItemForm = ({itemObj, handleUpdate, handleError}) => {
             [e.target.name]: e.target.value
         })
     }
+    // history.push("/profile") - eslint error message - no global restrictions? 
 
     const handleSubmit = e => {
         e.preventDefault()
@@ -24,7 +25,7 @@ const EditItemForm = ({itemObj, handleUpdate, handleError}) => {
         }
         // history.push("/profile")
 
-       fetch(`http://localhost:4000/items/${itemObj.id}`, {
+       fetch(`http://localhost:4000/api/v1/items/${itemObj.id}`, {
            method: "PATCH",
            headers: {
                "Content-Type": "application/json"

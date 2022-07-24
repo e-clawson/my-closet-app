@@ -37,17 +37,17 @@ const NavBar = () => {
               New Outfit
             </Button>
 
-            <Button as={Link} to="/newoutfit">
+            {/* <Button as={Link} to="/newoutfit">
               New Collection
-            </Button>
+            </Button> */}
 
             <Button as={Link} to="/outfits">
               My Outfits
             </Button>
 
-            <Button as={Link} to="/collections">
+            {/* <Button as={Link} to="/collections">
               My Collections
-            </Button>
+            </Button> */}
 
             <Button as={Link} to="/logout">
               Logout

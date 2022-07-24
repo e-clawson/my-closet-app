@@ -1,10 +1,12 @@
 class Item < ApplicationRecord
+  include Rails.application.routes.url_helpers
     belongs_to :user
     has_many :outfit_items
     has_many :outfits, through: :outfit_items
 
     #image assoc
     has_one_attached :item_image
+    has_one_attached :attachment
 
     #image validations
     validate :acceptable_image
@@ -20,5 +22,9 @@ class Item < ApplicationRecord
         unless acceptable_types.include?(item_image.content_type)
           errors.add(:item_image, "must be a JPEG or PNG")
         end
+    end
+
+    def image_url
+      url_for(self.item_image)
     end
 end

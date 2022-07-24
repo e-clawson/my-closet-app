@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
       resources :outfit_items
       resources :items
+      delete "/items/:id", to: "items#destroy"
       resources :outfits, only: [:index, :create]
 
       # Need to figure out how to create routes for item_outfits

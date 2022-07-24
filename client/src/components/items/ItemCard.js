@@ -30,7 +30,7 @@ const ItemCard = ({item, handleError}) => {
 
     const handleClick = (e) => { 
         if (e.target.name === "delete") {
-          fetch(`http://localhost:4000/items/${item.id}`, {    method: "DELETE"
+          fetch(`http://localhost:4000/api/v1/items/${item.id}`, {    method: "DELETE"
           })
           .then(() => history.push("/profile"))
         } else {

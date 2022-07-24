@@ -4,6 +4,7 @@ import { UserContext } from '../../context/user';
 import { Redirect } from 'react-router-dom';
 import ItemContainer from '../../containers/ItemContainer';
 import styled from 'styled-components';
+import { ItemFilter } from '../items/ItemFilter';
 
 const Profile = () => {
     const {user} = useContext(UserContext)
