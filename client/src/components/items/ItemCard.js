@@ -30,7 +30,7 @@ const ItemCard = ({item, handleError}) => {
 
     const handleClick = (e) => { 
         if (e.target.name === "delete") {
-          fetch(`http://localhost:4000/items/${itemObj.id}`, {    method: "DELETE"
+          fetch(`http://localhost:4000/items/${item.id}`, {    method: "DELETE"
           })
           .then(() => history.push("/profile"))
         } else {
@@ -57,7 +57,7 @@ const ItemCard = ({item, handleError}) => {
     return (
         <div className= "item-card">
           {!editMode ? <>
-            <h3>Name: <Link to={`/items/${finalItem.id}`}>{finalItem.name}</Link></h3>
+            <h3>Name: {finalItem.name}</h3>
             <h4>Type: {item.item_type}</h4>
             <h4>Size: {item.size}</h4>
             <h4>Color: {item.color}</h4>

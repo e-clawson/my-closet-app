@@ -13,7 +13,7 @@ Rails.application.routes.draw do
       delete "/logout", to: "sessions#destroy"
 
       resources :outfit_items
-      resources :items, only: [:index, :create]
+      resources :items
       resources :outfits, only: [:index, :create]
 
       # Need to figure out how to create routes for item_outfits
