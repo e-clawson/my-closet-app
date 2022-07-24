@@ -1,5 +1,3 @@
-// Anywhere that you want to add the option for a user to “Log in with Google”, you will want to add this code to your view file:
-
 import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -19,7 +17,7 @@ import { useContext, useState } from 'react';
 import { MessageContext } from '../../context/message';
 import { useHistory, Redirect } from 'react-router-dom';
 // import Signup from './Signup';
-import {GoogleLogin} from 'react-google-login';
+// import {GoogleLogin} from '@react-oauth/google';
 
 
 const theme = createTheme();
@@ -51,7 +49,7 @@ export default function SignIn() {
 
 const responseGoogle = (response) => {
   const requestOptions = {
-      method: 'POST',
+      method: 'GET',
       headers: {
           // 'Authorization': `Bearer ${response.Zi.accessToken}`,
           'Content-Type': 'application/json',
@@ -74,7 +72,7 @@ const responseGoogle = (response) => {
     }
   })
   .catch(err => setMessage({message: err.message, color: "red"}))
-}
+  }
 
 if (user) return <Redirect to="/profile" />
 
@@ -134,7 +132,9 @@ if (user) return <Redirect to="/profile" />
             >
               Sign In
             </Button>
-            <GoogleLogin height="10" width="500px" backgroundColor="#4285f4" clientId="781784725438-7rjsrk7bn41r6cpif9h55ur6u0cep7d5.apps.googleusercontent.com" access="offline" scope="email profile" onSuccess={responseGoogle} onFailure={responseGoogle}/>
+            {/* <div>
+              <GoogleLogin height="10" width="500px" backgroundColor="#4285f4" clientId="781784725438-7rjsrk7bn41r6cpif9h55ur6u0cep7d5.apps.googleusercontent.com" access="offline" scope="email profile" onSuccess={responseGoogle} onFailure={responseGoogle}/>
+            </div> */}
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">

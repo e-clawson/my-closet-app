@@ -1,6 +1,5 @@
 import { useEffect, useContext } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Header from "./Header";
 // import { Link } from "react-router-dom";
 import { UserContext } from "../context/user";
 import NavBar from "./NavBar";
@@ -12,6 +11,7 @@ import Logout from "./user/Logout";
 import Profile from "./user/Profile";
 import Signup from "./user/Signup";
 import ItemForm from "./items/NewItemForm";
+// import { GoogleOAuthProvider } from '@react-oauth/google';
 
 
 function App() {
