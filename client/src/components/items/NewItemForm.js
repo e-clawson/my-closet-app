@@ -4,12 +4,15 @@ import { Button, Input, FormField, Label } from "../../styles";
 import Container from '@mui/material/Container';
 
 const ItemForm = () => {
+  // const itemImageFile = React.createRef()
+
   const [item, setItem] = useState({
       name: "",
       item_type: "",
       size: "",
       color: "",
       description: "",
+      item_image: "",
   });
 
   const history = useHistory()
@@ -23,7 +26,7 @@ const ItemForm = () => {
 
   const handleSubmit = e => {
       e.preventDefault()
-      if ([item.name, item.item_type, item.size, item.color, item.description].some(val => val.trim() === "")) {
+      if ([item.name, item.item_type, item.size, item.color, item.description, item.item_image].some(val => val.trim() === "")) {
         alert("Please provide all the requested information")
       }
       history.push("/home")
@@ -34,6 +37,7 @@ const ItemForm = () => {
       size: item.size,
       color: item.color,
       description: item.description,
+      item_image: item.item_image,
   }
 
   fetch("api/v1/items", {
@@ -58,6 +62,17 @@ const ItemForm = () => {
           name="name"
           autoComplete="off"
           value={setItem.item_name}
+          onChange={handleChange}
+        />
+         </FormField>
+         <FormField>
+         <Label htmlFor="Item Image">Item Image</Label>
+        <Input
+          type="file"
+          name="item_image"
+          // ref={this.itemImageFile}
+          autoComplete="off"
+          value={setItem.item_image}
           onChange={handleChange}
         />
          </FormField>
