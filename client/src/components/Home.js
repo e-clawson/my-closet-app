@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import About from "./About";
 
 const Home = () => {
 
@@ -7,6 +8,9 @@ const Home = () => {
     <div> 
       <Wrapper>
         <h2>Homepage</h2>
+     </Wrapper>
+     <Wrapper>
+      <About />
      </Wrapper>
     </div>
   )

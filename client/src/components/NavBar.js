@@ -20,9 +20,6 @@ const NavBar = () => {
         <Button as={Link} to="/">
          Home
         </Button>
-        <Button as={Link} to="/about">
-         About
-        </Button>
         {user ? (
           <>
             <Button as={Link} to="/profile">
