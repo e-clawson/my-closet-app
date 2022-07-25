@@ -55,6 +55,7 @@ const ItemCard = ({item, handleError}) => {
     // )
 
     return (
+      console.log(item),
         <div className= "item-card">
           {!editMode ? <>
             <h3>Name: {item.name}</h3>

@@ -29,11 +29,11 @@ const ItemForm = () => {
       if ([item.name, item.item_type, item.size, item.color, item.description, item.item_image].some(val => val.trim() === "")) {
         alert("Please provide all the requested information")
       }
-      history.push("/home")
+      history.push("/profile")
 
   const newItem = {
-      name: item.item_name,
-      item_type: item.item_type,
+      name: item.name,
+      type: item.item_type,
       size: item.size,
       color: item.color,
       description: item.description,

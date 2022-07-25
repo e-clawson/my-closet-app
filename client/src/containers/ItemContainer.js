@@ -25,9 +25,9 @@ const ItemContainer = () => {
         <Wrapper>
             <h2>My Items</h2>
         </Wrapper>
-        <Wrapper>
+        {/* <Wrapper>
         <ItemFilter handleSearch={handleSearch} />
-        </Wrapper>
+        </Wrapper> */}
         <br/>
         <ItemList items={items} />
     </>

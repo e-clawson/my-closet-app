@@ -1,6 +1,7 @@
 import {useState} from "react"
+import { useHistory } from "react-router-dom"
 
-const EditItemForm = ({itemObj, handleUpdate, handleError}) => {
+const EditItemForm = ({ handleUpdate, handleError}) => {
     const [item, setItem] = useState({
         name: "",
         item_type: "",
@@ -10,22 +11,23 @@ const EditItemForm = ({itemObj, handleUpdate, handleError}) => {
         item_image: "", 
     });
 
+    const history = useHistory() 
+
     const handleChange = (e) => {
         setItem({
             ...item,
             [e.target.name]: e.target.value
         })
     }
-    // history.push("/profile") - eslint error message - no global restrictions? 
 
     const handleSubmit = e => {
         e.preventDefault()
         if ([item.name, item.item_type, item.size, item.color, item.description, item.item_image].some(val => val.trim() === "")) {
             alert("You must fill in all the information please!")
         }
-        // history.push("/profile")
+        history.push("/profile")
 
-       fetch(`http://localhost:4000/api/v1/items/${itemObj.id}`, {
+       fetch(`http://localhost:4000/api/v1/items/${item.id}`, {
            method: "PATCH",
            headers: {
                "Content-Type": "application/json"
@@ -36,13 +38,13 @@ const EditItemForm = ({itemObj, handleUpdate, handleError}) => {
             if (resp.status === 201) {
                 resp.json()
                 .then(data => handleUpdate(data))
+                window.history.push("/profile")
             } else {
                 resp.json()
                 .then(errorObj => handleError(errorObj.error))
             }
         })
         .catch(err => handleError(err.message))
-        
     }
 
     return (
