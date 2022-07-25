@@ -1,86 +1,79 @@
+import "./Outfit.css"
 import {useState, useEffect} from "react"
 import {Link, useParams, useLocation, useHistory} from "react-router-dom"
-import OutfitForm from './OutfitForm'
-import OutfitList from './OutfitList'
-import EditOutfitForm from "./EditOutfitForm"
+import EditOutfitForm from "./EditItemForm"
 
-const PostCard = ({post, handleError}) => {
+const OutfitCard = ({outfit, handleError}) => {
     const {id} = useParams()
     const location = useLocation()
-    const [postObj, setPostObj] = useState(null);
+    const [outfitObj, setOutfitObj] = useState(null);
     const [editMode, setEditMode] = useState(false);
-    const [comments, setComments] = useState([]);
     const history = useHistory()
-    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 
     useEffect(() => {   
-        if (!post) {
-            fetch(`/api/v1/posts/${id}`)
+        if (!outfit) {
+            fetch(`/api/v1/outfits/${id}`)
             .then(resp => resp.json())
-            .then(post => {
-              setPostObj(post)
-              setComments(post.comments)
+            .then(item => {
+              setOutfitObj(outfit)
             })
         }
-    }, [post, id]);
+    }, [outfit, id]);
 
-    const addNewComment = (commentObj) => {
-      setComments(currentComments => [commentObj, ...currentComments])
-    }
-
-    const formatDateTime = (datetime) => {
-      const m = new Date(datetime);
-      const dateString =
-          m.getUTCFullYear() + "/" +
-          ("0" + (m.getUTCMonth()+1)).slice(-2) + "/" +
-          ("0" + m.getUTCDate()).slice(-2) + " " +
-          ("0" + m.getUTCHours()).slice(-2) + ":" +
-          ("0" + m.getUTCMinutes()).slice(-2) + ":" +
-          ("0" + m.getUTCSeconds()).slice(-2);
-      return dateString;
-    }
-
-    const handleUpdate = (updatedPostObj) => {
-      // e.preventDefault()
-      setEditMode(false)
-      setPostObj(updatedPostObj)
-
-    }
-    const handleClick = (e) => { 
-      if (e.target.name === "delete") {
-        fetch(`http://localhost:3001/posts/${postObj.id}`, {    method: "DELETE"
-        })
-        .then(() => history.push("/posts"))
-      } else {
-        setEditMode(true)
+    const handleUpdate = (updatedOutfitObj) => {
+        // e.preventDefault()
+        setEditMode(false)
+        setOutfitObj(updatedOutfitObj)
       }
-     }
 
-    const finalPost = post ? post : postObj
-    if (!finalPost) return <h1>Loading...</h1>
-  return (
-    <div>
-      {!editMode ? <>
-        <h3>Title: <Link to={`/posts/${finalPost.id}`}>{finalPost.title}</Link></h3>
-        <h4>Content: {location.pathname !== "/posts" ? finalPost.content : `${finalPost.content.slice(0, 20)}...`}</h4>
-        <h4>Delete Date&Time: {finalPost.delete_time ? formatDateTime(finalPost.delete_time) : "N/A"}</h4>
-        {finalPost.mediaUrl ? <img src={finalPost.mediaUrl} alt="Media explanation here" /> : null}
-        {location.pathname !== "/posts" ? <>
-          <button name="edit-mode" id="edit-btn" onClick={handleClick}>Edit</button>
-          <button name="delete" id="delete-btn" onClick={handleClick}>Delete</button>
-        </> : null}
-        </> : <EditPostForm handleError={handleError} postObj={finalPost} handleUpdate={handleUpdate}/>}
-        <hr />
-        <hr />
-        {location.pathname !== "/posts" ? (<>
-          <CommentForm addNewComment={addNewComment} postId={finalPost.id} />
-          <br />
-        <hr />
-        <hr />
-          <CommentsList comments={comments} />
-        </>) : null }
-    </div>
-  )
+    const handleClick = (e) => { 
+        if (e.target.name === "delete") {
+          fetch(`http://localhost:4000/api/v1/outfits/${outfit.id}`, {    method: "DELETE"
+          })
+          .then(() => history.push("/outfits"))
+        } else {
+          setEditMode(true)
+        }
+       }
+
+    const finalOutfit = outfit ? outfit : outfitObj
+    if (!finalOutfit) return <h1>Loading...</h1>
+
+    // return (
+    //     <div className= "item-card">
+    //         <h2>Item: {item.name}</h2>
+    //         <h4>Type: {item.item_type}</h4>
+    //         <h4>Size: {item.size}</h4>
+    //         <h4>Color: {item.color}</h4>
+    //         <h4>Description: {item.description}</h4>
+    //         <button>Add to Outfit</button>
+    //         <button>Edit</button>
+    //         <button>Delete</button>
+    //     </div>
+    // )
+
+    return (
+      console.log(outfit),
+        <div className= "outfit-card">
+          {!editMode ? <>
+            <h3>Name: {outfit.name}</h3>
+            <h4>Description: {outfit.description}</h4>
+            <h4>Image:   {item.item_image ? <img src={item.item_image} alt="Image Explanation Here" /> : null}</h4>
+            {location.pathname !== "/outfits" ? <>
+              <button name="edit-mode" id="edit-btn" onClick={handleClick}>Edit</button>
+              <button name="delete" id="delete-btn" onClick={handleClick}>Delete</button>
+            </> : null}
+            </> : <EditOutfitForm handleError={handleError} outfitObj={finalOutfit} handleUpdate={handleUpdate}/>}
+            {/* <hr />
+            <hr />
+            {location.pathname !== "/items" ? (<>
+              <br />
+            <hr />
+            <hr />
+              <ItemList item={item} />
+            </>) : null } */}
+        </div>
+      )
 }
 
-export default PostCard
+export default OutfitCard
