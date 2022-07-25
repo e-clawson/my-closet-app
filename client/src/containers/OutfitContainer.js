@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react"
 import ItemList from "../components/items/ItemList";
 import styled from "styled-components";
-import { OutfitFilter } from "../components/outfits/OutfitFilter";
+// import { OutfitFilter } from "../components/outfits/OutfitFilter";
 
 
 const OutfitContainer = () => {
     const [outfits, setOutfits] = useState([]);
-    const [filteredOutfits, setFilteredOutfits] = useState(outfits)
+    // const [filteredOutfits, setFilteredOutfits] = useState(outfits)
 
     useEffect(() => {
         fetch("/api/v1/outfits")
@@ -15,10 +15,10 @@ const OutfitContainer = () => {
         .catch(err => alert(err))  
     }, []);
 
-    const handleSearch = (searchValue) => {
-        const filteredItems = outfits.filter(outfit => (outfit.name["name"] || outfit.name).toLowerCase().startsWith(searchValue.toLowerCase()))
-        setFilteredOutfits(filteredOutfits)
-    }
+    // const handleSearch = (searchValue) => {
+    //     const filteredItems = outfits.filter(outfit => (outfit.name["name"] || outfit.name).toLowerCase().startsWith(searchValue.toLowerCase()))
+    //     setFilteredOutfits(filteredOutfits)
+    // }
 
   return (
     <>
@@ -43,4 +43,4 @@ const Wrapper = styled.header`
 `;
 
 
-export default ItemContainer;
+export default OutfitContainer;

@@ -14,7 +14,7 @@ const OutfitCard = ({outfit, handleError}) => {
         if (!outfit) {
             fetch(`/api/v1/outfits/${id}`)
             .then(resp => resp.json())
-            .then(item => {
+            .then(outfit => {
               setOutfitObj(outfit)
             })
         }

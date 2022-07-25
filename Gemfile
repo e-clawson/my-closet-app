@@ -46,7 +46,7 @@ group :development do
   gem 'bullet'
 end
 
-  gem 'jsonapi-serializer'
+gem 'jsonapi-serializer'
 
 group :development, :test do
   gem 'rspec-rails', '~> 5.0.0'
