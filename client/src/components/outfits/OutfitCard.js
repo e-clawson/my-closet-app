@@ -1,7 +1,7 @@
 import "./Outfit.css"
 import {useState, useEffect} from "react"
 import {Link, useParams, useLocation, useHistory} from "react-router-dom"
-import EditOutfitForm from "./EditItemForm"
+import EditOutfitForm from "./EditOutfitForm"
 
 const OutfitCard = ({outfit, handleError}) => {
     const {id} = useParams()
@@ -28,7 +28,7 @@ const OutfitCard = ({outfit, handleError}) => {
 
     const handleClick = (e) => { 
         if (e.target.name === "delete") {
-          fetch(`http://localhost:4000/api/v1/outfits/${outfit.id}`, {    method: "DELETE"
+          fetch(`http://localhost:4000/api/v1/outfits/${id}`, {    method: "DELETE"
           })
           .then(() => history.push("/outfits"))
         } else {
@@ -56,9 +56,8 @@ const OutfitCard = ({outfit, handleError}) => {
       console.log(outfit),
         <div className= "outfit-card">
           {!editMode ? <>
-            <h3>Name: {outfit.name}</h3>
+            <h3>Name: <Link to={`/outfits/${finalOutfit.id}`}>{finalOutfit.name}</Link></h3>
             <h4>Description: {outfit.description}</h4>
-            <h4>Image:   {item.item_image ? <img src={item.item_image} alt="Image Explanation Here" /> : null}</h4>
             {location.pathname !== "/outfits" ? <>
               <button name="edit-mode" id="edit-btn" onClick={handleClick}>Edit</button>
               <button name="delete" id="delete-btn" onClick={handleClick}>Delete</button>

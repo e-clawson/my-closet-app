@@ -13,6 +13,7 @@ import Signup from "./user/Signup";
 import ItemForm from "./items/NewItemForm";
 // import { GoogleOAuthProvider } from '@react-oauth/google';
 import OutfitContainer from "../containers/OutfitContainer"
+import OutfitForm from "./outfits/OutfitForm";
 
 
 function App() {
@@ -49,8 +50,8 @@ function App() {
             <Route path="/outfits">
               <OutfitContainer />
             </Route>
-            <Route path="/newstory">
-              {/* <StoryForm /> */}
+            <Route path="/newoutfit">
+              <OutfitForm />
             </Route>
             <Route path="/">
               <Home />

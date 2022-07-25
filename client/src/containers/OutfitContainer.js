@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import ItemList from "../components/items/ItemList";
 import styled from "styled-components";
 // import { OutfitFilter } from "../components/outfits/OutfitFilter";
+import OutfitList from "../components/outfits/OutfitList"
 
 
 const OutfitContainer = () => {
@@ -29,7 +30,7 @@ const OutfitContainer = () => {
         <OutfitFilter handleSearch={handleSearch} />
         </Wrapper> */}
         <br/>
-        <ItemList outfits={outfits} />
+        <OutfitList outfits={outfits} />
     </>
 
   )
