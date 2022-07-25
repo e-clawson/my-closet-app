@@ -57,13 +57,12 @@ const ItemCard = ({item, handleError}) => {
     return (
         <div className= "item-card">
           {!editMode ? <>
-            <h3>Name: {finalItem.name}</h3>
+            <h3>Name: {item.name}</h3>
             <h4>Type: {item.item_type}</h4>
             <h4>Size: {item.size}</h4>
             <h4>Color: {item.color}</h4>
             <h4>Description: {item.description}</h4>
-            <h4>Content: {location.pathname !== "/items" ? finalItem.content : `${finalItem.content.slice(0, 20)}...`}</h4>
-            {finalItem.mediaUrl ? <img src={finalItem.mediaUrl} alt="Image Explanation Here" /> : null}
+            <h4>Image:   {item.item_image ? <img src={item.item_image} alt="Image Explanation Here" /> : null}</h4>
             {location.pathname !== "/items" ? <>
               <button name="edit-mode" id="edit-btn" onClick={handleClick}>Edit</button>
               <button name="delete" id="delete-btn" onClick={handleClick}>Delete</button>

@@ -1,6 +1,6 @@
 class ItemSerializer #
   include JSONAPI::Serializer
-  attributes :id, :name, :item_type, :size, :color, :description, :user_id, :item_image_format, :attachment_format
+  attributes :id, :name, :item_type, :size, :color, :description, :user_id, :item_image, :item_image_format, :attachment_format
 
   def item_image_format
     return unless object.avater.attached?

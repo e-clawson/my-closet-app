@@ -7,7 +7,7 @@ const EditItemForm = ({itemObj, handleUpdate, handleError}) => {
         size: "",
         color: "",
         description: "",
-        // mediaUrl: postObj.mediaUrl || "",
+        item_image: "", 
     });
 
     const handleChange = (e) => {
@@ -20,7 +20,7 @@ const EditItemForm = ({itemObj, handleUpdate, handleError}) => {
 
     const handleSubmit = e => {
         e.preventDefault()
-        if ([item.name, item.item_type, item.size, item.color, item.description].some(val => val.trim() === "")) {
+        if ([item.name, item.item_type, item.size, item.color, item.description, item.item_image].some(val => val.trim() === "")) {
             alert("You must fill in all the information please!")
         }
         // history.push("/profile")
@@ -30,7 +30,7 @@ const EditItemForm = ({itemObj, handleUpdate, handleError}) => {
            headers: {
                "Content-Type": "application/json"
            },
-           body: JSON.stringify({name: item.name, item_type: item.item_type, size: item.size, color: item.color, description: item.description})
+           body: JSON.stringify({name: item.name, item_type: item.item_type, size: item.size, color: item.color, description: item.description, item_image: item.item_image})
        })
        .then((resp) => {
             if (resp.status === 201) {
@@ -59,8 +59,8 @@ const EditItemForm = ({itemObj, handleUpdate, handleError}) => {
                 <input onChange={handleChange} type="text" name="color" value={item.color} required/><br />
                 <label htmlFor="item_type">Item Type</label>
                 <input onChange={handleChange} type="text" name="description" value={item.description} required/><br />
-                {/* <label htmlFor="mediaUrl">Media Url</label>
-                <input onChange={handleChange} type="text" name="mediaUrl" value={post.mediaUrl}/><br /> */}
+                <label htmlFor="attachment">Item Image</label>
+                <input onChange={handleChange} type="file" name="item image" value={item.item_image}/><br />
                 <input type="submit" value="Update Item" />
             </form>
         </>

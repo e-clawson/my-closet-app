@@ -67,6 +67,7 @@ const ItemForm = () => {
          </FormField>
          <FormField>
          <Label htmlFor="Item Image">Item Image</Label>
+         <h5>(File type must be a .png, .jpeg, or .jpg and must be smaller than 1 MB)</h5>
         <Input
           type="file"
           name="item_image"
