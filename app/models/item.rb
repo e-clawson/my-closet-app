@@ -5,28 +5,27 @@ class Item < ApplicationRecord
     has_many :outfits, through: :outfit_items
 
     #image assoc
-    has_one_attached :item_image
-    has_one_attached :attachment
+    has_one_attached :image, :dependent => :destroy
 
     #image validations
-    # validates :acceptable_image
-    # validates :item_image, content_type: [:png, :jpg, :jpeg], size: { less_than: 1.megabytes , message: 'must be smaller than 1 MB' }
-    # validates :attachment, content_type: { in: 'application/pdf', message: 'must be a .png, .jpg, or .jpeg file type' }
+    validate :acceptable_image
+    # validate :avatar, content_type: [:png, :jpg, :jpeg], size: { less_than: 1.megabytes , message: 'must be smaller than 1 MB' }
+    # validate :attachment, content_type: { in: 'application/pdf', message: 'must be a .png, .jpg, or .jpeg file type' }
 
-    # def acceptable_image 
-    #     return unless item_image.attached?
+    def acceptable_image 
+        return unless image.attached?
       
-    #     unless item_image.byte_size <= 1.megabyte
-    #       errors.add(:item_image, "is too big")
-    #     end
+        unless image.byte_size <= 1.megabyte
+          errors.add(:avatar, "is too big")
+        end
       
-    #     acceptable_types = ["image/jpeg", "image/png"]
-    #     unless acceptable_types.include?(item_image.content_type)
-    #       errors.add(:item_image, "must be a JPEG or PNG")
-    #     end
-    # end
+        acceptable_types = ["image/jpeg", "image/png"]
+        unless acceptable_types.include?(image.content_type)
+          errors.add(:image, "must be a JPEG or PNG")
+        end
+    end
 
-    # def image_url
-    #   url_for(self.item_image)
-    # end
+    def image_url
+      url_for(self.image)
+    end
 end

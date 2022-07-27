@@ -63,7 +63,7 @@ const ItemCard = ({item, handleError}) => {
             <h4>Size: {item.size}</h4>
             <h4>Color: {item.color}</h4>
             <h4>Description: {item.description}</h4>
-            <h4>Image:   {item.item_image ? <img src={item.item_image} alt="Image Explanation Here" /> : null}</h4>
+            <h4>Image:   {item.item_image ? <img src={item.item_image} alt="Image Here" /> : null}</h4>
             {location.pathname !== "/items" ? <>
               <button name="edit-mode" id="edit-btn" onClick={handleClick}>Edit</button>
               <button name="delete" id="delete-btn" onClick={handleClick}>Delete</button>

@@ -53,7 +53,6 @@ const OutfitCard = ({outfit, handleError}) => {
     // )
 
     return (
-      console.log(outfit),
         <div className= "outfit-card">
           {!editMode ? <>
             <h3>Name: <Link to={`/outfits/${finalOutfit.id}`}>{finalOutfit.name}</Link></h3>
@@ -75,4 +74,4 @@ const OutfitCard = ({outfit, handleError}) => {
       )
 }
 
-export default OutfitCard
+export default OutfitCard;

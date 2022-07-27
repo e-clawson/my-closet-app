@@ -1,10 +1,10 @@
-import { useState } from "react"
+import React, { useState } from "react"
 import { useHistory } from "react-router-dom"
 import { Button, Input, FormField, Label } from "../../styles";
 import Container from '@mui/material/Container';
 
 const ItemForm = () => {
-  // const itemImageFile = React.createRef()
+  const itemImageFile = React.createRef()
 
   const [item, setItem] = useState({
       name: "",
@@ -43,10 +43,11 @@ const ItemForm = () => {
   fetch("api/v1/items", {
     method: "POST", 
     headers: {
-        "Content-Type": "application/json",
+        accept: "application/json",
     },
-    body: JSON.stringify(newItem) 
+    body: newItem 
   })
+  console.log(newItem)
   
 }
 
@@ -69,12 +70,14 @@ const ItemForm = () => {
          <Label htmlFor="Item Image">Item Image</Label>
          <h5>(File type must be a .png, .jpeg, or .jpg and must be smaller than 1 MB)</h5>
         <Input
+          className="formfield"
           type="file"
           name="item_image"
+          ref={setItem.itemImageFile}
           // ref={this.itemImageFile}
-          autoComplete="off"
-          value={setItem.item_image}
-          onChange={handleChange}
+          // autoComplete="off"
+          // value={setItem.item_image}
+          // onChange={handleChange}
         />
          </FormField>
          <FormField>
@@ -119,7 +122,7 @@ const ItemForm = () => {
         />
          </FormField>
       <FormField>
-        <Button type="submit">Submit Item</Button>
+        <Button type="submit" >Submit Item</Button>
       </FormField>
     </form>
     </Container>
