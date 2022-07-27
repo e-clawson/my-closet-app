@@ -12,8 +12,10 @@ Rails.application.routes.draw do
       post "/login", to: "sessions#create"
       delete "/logout", to: "sessions#destroy"
 
+
       resources :items
-      delete "/items/:id", to: "items#destroy"
+        delete "/items/:id", to: "items#destroy"
+        get "/:user_id/items", to: "items#index"
       # resources :outfits, only: [:index, :create]
       resources :outfits do 
         resources :outfit_items, only: [:index, :create]
