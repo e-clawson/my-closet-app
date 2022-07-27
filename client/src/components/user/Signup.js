@@ -45,8 +45,8 @@ const Signup = () => {
         if ([userObj.first_name, userObj.last_name, userObj.email, userObj.password, userObj.passwordConfirmation].some(val => val.trim() === "")) {
             setMessage({message: "You must fill in all the information please!", color: "red"})
         }
-        const didItWork = signup({...userObj, passwordConfirmation: userObj.passwordConfirmation})
-        if (didItWork) {
+        const success = signup({...userObj, password_confirmation: userObj.passwordConfirmation})
+        if (success) {
             setMessage({message: "User successfully created!", color: "green"})
             history.push("/profile")
         }
@@ -141,7 +141,6 @@ const Signup = () => {
                   fullWidth
                   variant="contained"
                   sx={{ mt: 3, mb: 2 }}
-                  href ="/profile"
                 >
                   Sign Up
                 </Button>

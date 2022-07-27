@@ -4,7 +4,7 @@ import { Button, Input, FormField, Label } from "../../styles";
 import Container from '@mui/material/Container';
 
 const ItemForm = () => {
-  const itemImageFile = React.createRef()
+  // const item_image = React.createRef()
 
   const [item, setItem] = useState({
       name: "",
@@ -73,7 +73,7 @@ const ItemForm = () => {
           className="formfield"
           type="file"
           name="item_image"
-          ref={setItem.itemImageFile}
+          ref={setItem.item_image}
           // ref={this.itemImageFile}
           // autoComplete="off"
           // value={setItem.item_image}

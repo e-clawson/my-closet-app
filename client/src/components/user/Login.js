@@ -15,7 +15,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { UserContext } from '../../context/user';
 import { MessageContext } from '../../context/message';
-// import GoogleLogin from 'react-google-login';
+import GoogleLogin from 'react-google-login';
 
 
 const theme = createTheme();
@@ -44,9 +44,11 @@ export default function SignIn() {
     }
   };
 
+  
+
   const responseGoogle = (response) => {
     const requestOptions = {
-        method: 'POST',
+        method: 'GET',
         headers: {
             // 'Authorization': `Bearer ${response.Zi.accessToken}`,
             'Content-Type': 'application/json',
@@ -136,9 +138,13 @@ return (
               data-login_uri="http://localhost:4000/login"
               data-auto_select="true" > Sign In With Google 
             </Button> */}
-              {/* <div>
-                <GoogleLogin height="10" width="500px" backgroundColor="#4285f4" clientId="781784725438-7rjsrk7bn41r6cpif9h55ur6u0cep7d5.apps.googleusercontent.com" access="offline" scope="email profile" onSuccess={responseGoogle} onFailure={responseGoogle} cookiePolicy={'single_host_origin'}  plugin_name='My-Closet-App' />
-              </div> */}
+               <GoogleLogin
+                  clientId="781784725438-7rjsrk7bn41r6cpif9h55ur6u0cep7d5.apps.googleusercontent.com"
+                  buttonText="Login"
+                  onSuccess={responseGoogle}
+                  onFailure={responseGoogle}
+                  cookiePolicy={'single_host_origin'}
+                />,
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">
