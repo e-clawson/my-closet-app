@@ -16,9 +16,10 @@ class ItemsController < ApplicationController
     end
 
     def create #post "/items" "users/17/items
-        @item = current_user.items.create!(item_params)
+        @item = current_user.item.create!(item_params)
         #if @item.id
-        @item.image.attach(params[:item][:image])
+        # item.image.attached?
+        @item.image.attach(params[:user][:image])
         render json: serialized_item, status: 201
         # else
         #     render json: {error: @prompt.errors.full_messages.to_sentence}

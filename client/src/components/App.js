@@ -4,17 +4,18 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { UserContext } from "../context/user";
 import NavBar from "./NavBar";
 import Notification from "./Notification";
-import About from "./About";
+// import About from "./About";
 import Home from "./Home";
 import Login from "./user/Login";
 import Logout from "./user/Logout";
 import Profile from "./user/Profile";
 import Signup from "./user/Signup";
-import ItemForm from "./items/NewItemForm";
+// import ItemForm from "./items/NewItemForm";
 // import { GoogleOAuthProvider } from '@react-oauth/google';
 import OutfitContainer from "../containers/OutfitContainer"
 import OutfitForm from "./outfits/OutfitForm";
 import OutfitList from "./outfits/OutfitList";
+import NewItemForm2 from "./items/NewItemForm2";
 
 
 function App() {
@@ -43,7 +44,7 @@ function App() {
               <Signup />
             </Route>
             <Route path="/newitem">
-              <ItemForm />
+              <NewItemForm2 />
             </Route>
             <Route path="/outfits">
               <OutfitContainer />

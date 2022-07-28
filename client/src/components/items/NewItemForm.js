@@ -12,7 +12,7 @@ const ItemForm = () => {
       size: "",
       color: "",
       description: "",
-      item_image: "",
+      image: "",
   });
 
   const history = useHistory()
@@ -26,7 +26,7 @@ const ItemForm = () => {
 
   const handleSubmit = e => {
       e.preventDefault()
-      if ([item.name, item.item_type, item.size, item.color, item.description, item.item_image].some(val => val.trim() === "")) {
+      if ([item.name, item.item_type, item.size, item.color, item.description, item.image].some(val => val.trim() === "")) {
         alert("Please provide all the requested information")
       }
       history.push("/profile")
@@ -37,18 +37,31 @@ const ItemForm = () => {
       size: item.size,
       color: item.color,
       description: item.description,
-      item_image: item.item_image,
+      image: item.image,
   }
 
   fetch("api/v1/items", {
     method: "POST", 
     headers: {
-        accept: "application/json",
+      "Content-Type": "application/json"
     },
-    body: newItem 
+    body: JSON.stringify(newItem)
   })
-  console.log(newItem)
-  
+  .then(resp => {
+    if (resp.status === 201) {
+        resp.json()
+        .then(item => {
+            setItem(item)
+            console.log(item)
+        })
+    } else {
+        resp.json()
+        .then(errorObj => {
+            alert(errorObj.error)
+        })
+    }
+}) 
+.catch(err => alert(err))
 }
 
   return (
@@ -56,7 +69,7 @@ const ItemForm = () => {
       <Container component="main" maxWidth="xs">  
       <h3>Add A New Item to Your Wardrobe!</h3>
       <form onSubmit={handleSubmit}>
-      <FormField>
+        <FormField>
         <Label htmlFor="name">Item Name</Label>
         <Input
           type="text"
@@ -64,20 +77,6 @@ const ItemForm = () => {
           autoComplete="off"
           value={setItem.item_name}
           onChange={handleChange}
-        />
-         </FormField>
-         <FormField>
-         <Label htmlFor="Item Image">Item Image</Label>
-         <h5>(File type must be a .png, .jpeg, or .jpg and must be smaller than 1 MB)</h5>
-        <Input
-          className="formfield"
-          type="file"
-          name="item_image"
-          ref={setItem.item_image}
-          // ref={this.itemImageFile}
-          // autoComplete="off"
-          // value={setItem.item_image}
-          // onChange={handleChange}
         />
          </FormField>
          <FormField>
@@ -120,11 +119,27 @@ const ItemForm = () => {
           value={setItem.description}
           onChange={handleChange}
         />
-         </FormField>
-      <FormField>
+        </FormField>
+        <FormField>
+         <Label htmlFor="Item Image">Item Image</Label>
+         <h5>(File type must be a .png, .jpeg, or .jpg and must be smaller than 1 MB)</h5>
+        <Input
+          className="formfield"
+          type="file"
+          name="image"
+          // accept="image/*"
+          // multiple={false}
+          // ref={setItem.image}
+          // ref={this.itemImageFile}
+          // autoComplete="off"
+          value={setItem.image}
+          onChange={handleChange}
+        />
+        </FormField>
+        <FormField>
         <Button type="submit" >Submit Item</Button>
-      </FormField>
-    </form>
+        </FormField>
+      </form>
     </Container>
     </>
   )

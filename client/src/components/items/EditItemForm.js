@@ -8,7 +8,7 @@ const EditItemForm = ({ handleUpdate, handleError}) => {
         size: "",
         color: "",
         description: "",
-        item_image: "", 
+        image: null, 
     });
 
     const history = useHistory() 
@@ -22,17 +22,16 @@ const EditItemForm = ({ handleUpdate, handleError}) => {
 
     const handleSubmit = e => {
         e.preventDefault()
-        if ([item.name, item.item_type, item.size, item.color, item.description, item.item_image].some(val => val.trim() === "")) {
+        if ([item.name, item.item_type, item.size, item.color, item.description, item.image].some(val => val.trim() === "")) {
             alert("You must fill in all the information please!")
         }
-        history.push("/profile")
 
        fetch(`http://localhost:4000/api/v1/items/${item.id}`, {
            method: "PATCH",
            headers: {
                "Content-Type": "application/json"
            },
-           body: JSON.stringify({name: item.name, item_type: item.item_type, size: item.size, color: item.color, description: item.description, item_image: item.item_image})
+           body: JSON.stringify({name: item.name, item_type: item.item_type, size: item.size, color: item.color, description: item.description, image: item.image})
        })
        .then((resp) => {
             if (resp.status === 201) {
@@ -47,22 +46,41 @@ const EditItemForm = ({ handleUpdate, handleError}) => {
         .catch(err => handleError(err.message))
     }
 
+//     const handleSubmit = event => {
+//         event.preventDefault();
+//         const formData = new FormData();
+//         formData.append('title', this.state.title);
+//         formData.append('body', this.state.body);
+//         formData.append('featured_image', this.state.featured_image);
+        
+//         fetch('http://localhost:4000/api/v1/items/${item.id}', {
+//           method: 'POST',
+//           body: formData
+//         })
+//         .catch(error=>console.log(error));
+//     }
+    
+
+//    const onImageChange = event => { 
+//         this.setState({ featured_image: event.target.files[0] });
+//       };
+
     return (
         <>
             <h3>Edit Item</h3>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="name">Name</label>
                 <input onChange={handleChange} type="text" name="name" value={item.name} required/><br />
-                <label htmlFor="item_type">Item Type</label>
+                <label htmlFor="item-type">Item Type</label>
                 <input onChange={handleChange} type="text" name="item_type" value={item.item_type} required/><br />
                 <label htmlFor="size">Size</label>
                 <input onChange={handleChange} type="text" name="size" value={item.size} required/><br />
                 <label htmlFor="color">Color</label>
                 <input onChange={handleChange} type="text" name="color" value={item.color} required/><br />
-                <label htmlFor="item_type">Item Type</label>
+                <label htmlFor="description">Description</label>
                 <input onChange={handleChange} type="text" name="description" value={item.description} required/><br />
-                <label htmlFor="attachment">Item Image</label>
-                <input onChange={handleChange} type="file" name="item image" value={item.item_image}/><br />
+                <label htmlFor="image">Image</label>
+                <input onChange={handleChange} type="file" name="image" accept="image/png, image/jpeg" value={item.image} /><br />
                 <input type="submit" value="Update Item" />
             </form>
         </>

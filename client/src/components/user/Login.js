@@ -44,24 +44,24 @@ export default function SignIn() {
     }
   };
 
-  
 
   const responseGoogle = (response) => {
-    const requestOptions = {
+    const requestOptions = ({
         method: 'GET',
         headers: {
-            // 'Authorization': `Bearer ${response.Zi.accessToken}`,
+        //     // 'Authorization': `Bearer ${response.Zi.accessToken}`,
             'Content-Type': 'application/json',
-            // 'access_token': `${response.Zi.accessToken}`
+        //     // 'access_token': `${response.Zi.accessToken}`
         },
-        body: JSON.stringify(response)
-    }
+        body: JSON.stringify(response),
+    });
     fetch(`/api/v1/auth/google_oauth2/callback`, requestOptions)
     .then(res => {
       if (res.ok) {
         res.json().then(data => {
           setUser({...data.data.attributes, items: data.data.relationships.items.data})
           setMessage({message: "User successfully logged in", color: "green"})
+          console.log(data)
         })
       }
       else {
@@ -138,13 +138,16 @@ return (
               data-login_uri="http://localhost:4000/login"
               data-auto_select="true" > Sign In With Google 
             </Button> */}
-               <GoogleLogin
+               {/* <GoogleLogin
                   clientId="781784725438-7rjsrk7bn41r6cpif9h55ur6u0cep7d5.apps.googleusercontent.com"
                   buttonText="Login"
                   onSuccess={responseGoogle}
                   onFailure={responseGoogle}
-                  cookiePolicy={'single_host_origin'}
-                />,
+                  // cookiePolicy={'single_host_origin'}
+                /> */}
+              <div>
+                <GoogleLogin height="10" width="500px" backgroundColor="#4285f4" clientId="781784725438-7rjsrk7bn41r6cpif9h55ur6u0cep7d5.apps.googleusercontent.com" access="offline" scope="email profile" onSuccess={responseGoogle} onFailure={responseGoogle}/>
+              </div>
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">

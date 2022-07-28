@@ -15,10 +15,11 @@ const ItemContainer = () => {
         .catch(err => alert(err))  
     }, []);
 
-    const handleSearch = (searchValue) => {
-        const filteredItems = items.filter(item => (item.name["name"] || item.name).toLowerCase().startsWith(searchValue.toLowerCase()))
-        setFilteredItems(filteredItems)
-    }
+    // const handleSearch = (searchValue) => {
+    //     const filteredItems = items.filter(item => (item.name["name"] || item.name).toLowerCase().startsWith(searchValue.toLowerCase()))
+    //     setFilteredItems(filteredItems)
+    // }
+
 
   return (
     <>
