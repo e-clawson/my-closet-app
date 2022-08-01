@@ -59,11 +59,11 @@ const ItemCard = ({item, handleError}) => {
         <div className= "item-card">
           {!editMode ? <>
             <h3>Name: {item.name}</h3>
-            <h4>Type: {item.item_type}</h4>
+            <h4>Type: {item.itemType}</h4>
             <h4>Size: {item.size}</h4>
             <h4>Color: {item.color}</h4>
             <h4>Description: {item.description}</h4>
-            <h4>Image:   {item.image ? <img src={item.image} alt="Item Image" /> : null}</h4>
+            {/* <h4>Image:   {item.image ? <img src={item.image} alt="Item Image" /> : null}</h4> */}
             {location.pathname !== "/items" ? <>
               <button name="edit-mode" id="edit-btn" onClick={handleClick}>Edit</button>
               <button name="delete" id="delete-btn" onClick={handleClick}>Delete</button>
