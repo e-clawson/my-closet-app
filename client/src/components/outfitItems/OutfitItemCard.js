@@ -1,43 +1,43 @@
-import "./Outfit.css"
+import "./OutfitItem.css"
 import {useState, useEffect} from "react"
 import {Link, useParams, useLocation, useHistory} from "react-router-dom"
-import EditOutfitForm from "./EditOutfitForm"
+// import EditOutfitForm from "./EditOutfitForm"
 
-const OutfitCard = ({outfit, handleError}) => {
+const OutfitItemCard = ({outfitItem, handleError}) => {
     const {id} = useParams()
     const location = useLocation()
-    const [outfitObj, setOutfitObj] = useState(null);
+    const [outfitItemObj, setOutfitItemObj] = useState(null);
     const [editMode, setEditMode] = useState(false);
     const history = useHistory()
 
     useEffect(() => {   
         if (!outfit) {
-            fetch(`/api/v1/outfits/${id}`)
+            fetch(`/api/v1/outfitItems/${id}`)
             .then(resp => resp.json())
             .then(outfit => {
-              setOutfitObj(outfit)
+              setOutfitItemObj(outfitItem)
             })
         }
-    }, [outfit, id]);
+    }, [outfitItem, id]);
 
-    const handleUpdate = (updatedOutfitObj) => {
+    const handleUpdate = (updatedOutfitItemObj) => {
         // e.preventDefault()
         setEditMode(false)
-        setOutfitObj(updatedOutfitObj)
+        setOutfitItemObj(updatedOutfitItemObj)
       }
 
     const handleClick = (e) => { 
         if (e.target.name === "delete") {
-          fetch(`http://localhost:4000/api/v1/outfits/${id}`, {    method: "DELETE"
+          fetch(`http://localhost:4000/api/v1/outfitItems/${id}`, {    method: "DELETE"
           })
-          .then(() => history.push("/outfits"))
+          .then(() => history.push("/outfitItems"))
         } else {
           setEditMode(true)
         }
        }
 
-    const finalOutfit = outfit ? outfit : outfitObj
-    if (!finalOutfit) return <h1>Loading...</h1>
+    const finalOutfitItem = outfitItem ? outfitItem : outfitItemObj
+    if (!finalOutfitItem) return <h1>Loading...</h1>
 
     // return (
     //     <div className= "item-card">
@@ -53,15 +53,15 @@ const OutfitCard = ({outfit, handleError}) => {
     // )
 
     return (
-        <div className= "outfit-card">
+        <div className= "outfitItem-card">
           {!editMode ? <>
-            <h3>Name: <Link to={`/outfits/${finalOutfit.id}`}>{finalOutfit.name}</Link></h3>
-            <h4>Description: {outfit.description}</h4>
-            {location.pathname !== "/outfits" ? <>
+            <h3>Name: {finalOutfitItem.name}</h3>
+            <h4>Description: {outfitItem.description}</h4>
+            {location.pathname !== "/outfitItems" ? <>
               <button name="edit-mode" id="edit-btn" onClick={handleClick}>Edit</button>
               <button name="delete" id="delete-btn" onClick={handleClick}>Delete</button>
             </> : null}
-            </> : <EditOutfitForm handleError={handleError} outfitObj={finalOutfit} handleUpdate={handleUpdate}/>}
+            </> : <EditOutfitItemForm handleError={handleError} outfitItemObj={finalOutfitItem} handleUpdate={handleUpdate}/>}
             {/* <hr />
             <hr />
             {location.pathname !== "/items" ? (<>
@@ -74,4 +74,4 @@ const OutfitCard = ({outfit, handleError}) => {
       )
 }
 
-export default OutfitCard;
+export default OutfitItemCard;
