@@ -60,8 +60,8 @@ const ItemForm = () => {
             alert(errorObj.error)
         })
     }
-}) 
-.catch(err => alert(err))
+  }) 
+    .catch(err => alert(err))
 }
 
   return (

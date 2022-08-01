@@ -6,30 +6,30 @@ import styled from "styled-components";
 
 const OutfitItemContainer = () => {
     const [outfitItems, setOutfitItems] = useState([]);
-    const [filteredOutfitItems, setFilteredOutfitItems] = useState(outfitItems)
+    // const [filteredOutfitItems, setFilteredOutfitItems] = useState(outfitItems)
 
     useEffect(() => {
-        fetch("/api/v1/outfitItems")
+        fetch("/api/v1/OutfitItems")
         .then(r => r.json())
         .then(data => setOutfitItems(data.data.map(p => p.attributes)))
         .catch(err => alert(err))  
     }, []);
 
-    const handleSearch = (searchValue) => {
-        const filteredOutfitItems = outfitItems.filter(outfitItem => (outfitItem.name["name"] || outfitItem.name).toLowerCase().startsWith(searchValue.toLowerCase()))
-        setFilteredOutfitItems(filteredOutfitItems)
-    }
+    // const handleSearch = (searchValue) => {
+    //     const filteredOutfitItems = outfitItems.filter(outfitItem => (outfitItem.name["name"] || outfitItem.name).toLowerCase().startsWith(searchValue.toLowerCase()))
+    //     setFilteredOutfitItems(filteredOutfitItems)
+    // }
 
   return (
     <>
         <Wrapper>
             <h2>Outfit Items</h2>
         </Wrapper>
-        <Wrapper>
+        {/* <Wrapper>
         <ItemFilter handleSearch={handleSearch} />
-        </Wrapper>
+        </Wrapper> */}
         <br/>
-        <ItemList outfitItems={outfitItems} />
+        <OutfitItemList outfitItems={outfitItems} />
     </>
 
   )
@@ -43,4 +43,4 @@ const Wrapper = styled.header`
 `;
 
 
-export default ItemContainer;
+export default OutfitItemContainer;
