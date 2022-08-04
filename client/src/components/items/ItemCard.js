@@ -12,11 +12,10 @@ const ItemCard = ({item, handleError}) => {
     const [itemObj, setItemObj] = useState(null);
     const [editMode, setEditMode] = useState(false);
     const history = useHistory()
-    const {user} = useContext(UserContext)
 
     useEffect(() => {   
         if (!item) {
-            fetch(`/api/v1/${user.id}/items/${id}`)
+            fetch(`/api/v1/items/${id}`)
             .then(resp => resp.json())
             .then(item => {
               setItemObj(item)
@@ -28,11 +27,12 @@ const ItemCard = ({item, handleError}) => {
         // e.preventDefault()
         setEditMode(false)
         setItemObj(updatedItemObj)
+        history.push("/profile")
       }
 
     const handleClick = (e) => { 
         if (e.target.name === "delete") {
-          fetch(`http://localhost:4000/api/v1/items/${id}`, {    method: "DELETE"
+          fetch(`/api/v1/items/${item.id}`, {    method: "DELETE"
           })
           .then(() => history.push("/profile"))
         } else {
