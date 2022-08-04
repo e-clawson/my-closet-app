@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
       resources :outfits
       post ":user_id/outfits", to: "outfits#create"
-      # get ":outfit_id/outfit_items", to: "outfits#index_outfit_items"
+      # get ":outfit_id/outfit_items", to: "outfit#index_outfit_items"
 
       resources :items
      

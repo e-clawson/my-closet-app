@@ -12,7 +12,7 @@ const OutfitItemContainer = () => {
     useEffect(() => {
         fetch(`/api/v1/${user.data.attributes.id}/outfit_items`)
         .then(r => r.json())
-        .then(data => setOutfitItems(data.data.map(p => p.attributes)))
+        .then(outfitItem => setOutfitItems(outfitItem))
         .catch(err => alert(err))  
     }, []);
 

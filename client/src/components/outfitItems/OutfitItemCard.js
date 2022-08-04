@@ -5,6 +5,7 @@ import {Link, useParams, useLocation, useHistory} from "react-router-dom"
 
 const OutfitItemCard = ({outfitItem, handleError}) => {
     const {id} = useParams()
+    const {outfit} = useParams
     const location = useLocation()
     const [outfitItemObj, setOutfitItemObj] = useState(null);
     const [editMode, setEditMode] = useState(false);
@@ -12,7 +13,7 @@ const OutfitItemCard = ({outfitItem, handleError}) => {
 
     useEffect(() => {   
         if (!outfitItem) {
-            fetch(`/api/v1/outfitItems/${id}`)
+            fetch(`/api/v1/${outfit.id}/${id}`)
             .then(resp => resp.json())
             .then(outfitItem => {
               setOutfitItemObj(outfitItem)
