@@ -53,9 +53,6 @@ function App() {
               <OutfitContainer />
               <OutfitItemContainer />
             </Route>
-            <Route path="/outfits/:outfitId/items">
-              <OutfitList />
-            </Route>
             <Route path="/newoutfit">
               <OutfitForm />
             </Route>

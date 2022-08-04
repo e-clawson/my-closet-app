@@ -11,9 +11,9 @@ class UsersController < ApplicationController
       render json: UserSerializer.new(@current_user), status: :ok
     end
 
-    def index_items # "users/:id/stories"
+    def index_outfits # "users/:id/stories"
       user = User.find_by_id(session[:user_id])
-      render json: user.items
+      render json: user.outfits
       # else
       #     render json: {error: @post.errors.full_messages.to_sentence}
       # end

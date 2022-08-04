@@ -37,7 +37,7 @@ const EditItemForm = ({itemObj, handleUpdate, handleError}) => {
             if (resp.status === 201) {
                 resp.json()
                 .then(data => handleUpdate(data))
-                window.history.push("/profile")
+                history.push("/profile")
             } else {
                 resp.json()
                 .then(errorObj => handleError(errorObj.error))

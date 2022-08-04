@@ -1,15 +1,16 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import OutfitItemList from "../components/outfitItems/OutfitItemList";
 import styled from "styled-components";
 // import { ItemFilter } from "../components/items/ItemFilter";
-
+import { UserContext } from "../context/user"
 
 const OutfitItemContainer = () => {
+    const {user} = useContext(UserContext)
     const [outfitItems, setOutfitItems] = useState([]);
     // const [filteredOutfitItems, setFilteredOutfitItems] = useState(outfitItems)
 
     useEffect(() => {
-        fetch("/api/v1/OutfitItems")
+        fetch(`/api/v1/${user.data.attributes.id}/outfit_items`)
         .then(r => r.json())
         .then(data => setOutfitItems(data.data.map(p => p.attributes)))
         .catch(err => alert(err))  

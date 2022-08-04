@@ -11,6 +11,15 @@ class OutfitsController < ApplicationController
         end
     end
 
+    def index_outfits #get "/stories" get "prompts/:prompt_id/stories"
+        if params[:user_id] 
+            user = User.find(params[:user_id])
+            render json: user.outfits
+        else # get "/stories"
+            render json: OutfitSerializer.new(Outfit.all).serializable_hash
+        end
+    end
+
     def show #get "/outfits/:id"
         @current_user
         render json: serialized_outfit

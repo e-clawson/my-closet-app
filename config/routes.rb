@@ -12,9 +12,9 @@ Rails.application.routes.draw do
       post "/login", to: "sessions#create"
       delete "/logout", to: "sessions#destroy"
       get ":user_id/items", to: "items#index_items"
+      get ":user_id/outfits", to: "outfits#index_outfits"
 
-      resources :outfits 
-      get ":user_id/outfits", to: "outfits#show"
+      resources :outfits
       post ":user_id/outfits", to: "outfits#create"
 
       resources :items
