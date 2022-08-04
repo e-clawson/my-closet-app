@@ -51,7 +51,6 @@ function App() {
             </Route>
             <Route path="/outfits">
               <OutfitContainer />
-              <OutfitItemContainer />
             </Route>
             <Route path="/newoutfit">
               <OutfitForm />

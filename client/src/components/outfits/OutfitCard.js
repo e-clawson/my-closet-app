@@ -28,7 +28,7 @@ const OutfitCard = ({outfit, handleError}) => {
 
     const handleClick = (e) => { 
         if (e.target.name === "delete") {
-          fetch(`http://localhost:4000/api/v1/outfits/${id}`, {    method: "DELETE"
+          fetch(`/api/v1/outfits/${id}`, {    method: "DELETE"
           })
           .then(() => history.push("/outfits"))
         } else {
@@ -55,21 +55,13 @@ const OutfitCard = ({outfit, handleError}) => {
     return (
         <div className= "outfit-card">
           {!editMode ? <>
-            <h3>Name: <Link to={`/outfits/${finalOutfit.id}`}>{finalOutfit.name}</Link></h3>
+            <h3>Name: <Link to={`/outfits/${finalOutfit.id}`}>{outfit.name}</Link></h3>
             <h4>Description: {outfit.description}</h4>
             {location.pathname !== "/outfits" ? <>
               <button name="edit-mode" id="edit-btn" onClick={handleClick}>Edit</button>
               <button name="delete" id="delete-btn" onClick={handleClick}>Delete</button>
             </> : null}
             </> : <EditOutfitForm handleError={handleError} outfitObj={finalOutfit} handleUpdate={handleUpdate}/>}
-            {/* <hr />
-            <hr />
-            {location.pathname !== "/items" ? (<>
-              <br />
-            <hr />
-            <hr />
-              <ItemList item={item} />
-            </>) : null } */}
         </div>
       )
 }

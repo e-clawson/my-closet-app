@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { UserContext } from "../context/user"
 
 const ItemContainer = () => {
-    const {user} = useContext(UserContext)
+    const {user} = useContext(UserContext);
     const [items, setItems] = useState([]);
     // const [filteredItems, setFilteredItems] = useState(items)
 

@@ -1,10 +1,9 @@
 import "./Item.css"
-import {useState, useEffect, useContext} from "react"
+import {useState, useEffect} from "react"
 import {useParams, useLocation, useHistory} from "react-router-dom"
 // import ItemForm from './ItemForm'
 // import ItemList from './ItemList'
 import EditItemForm from "./EditItemForm"
-import { UserContext } from "../../context/user"
 
 const ItemCard = ({item, handleError}) => {
     const {id} = useParams()
@@ -70,14 +69,6 @@ const ItemCard = ({item, handleError}) => {
                 <button name="delete" id="delete-btn" onClick={handleClick}>Delete</button>
               </> : null}
               </> : <EditItemForm handleError={handleError} itemObj={finalItem} handleUpdate={handleUpdate}/>}
-              {/* <hr />
-              <hr />
-              {location.pathname !== "/items" ? (<>
-                <br />
-              <hr />
-              <hr />
-                <ItemList item={item} />
-              </>) : null } */}
          </div>
       )
 }

@@ -1,21 +1,20 @@
 import { useState, useEffect, useContext } from "react"
-import ItemList from "../components/items/ItemList";
 import styled from "styled-components";
 // import { OutfitFilter } from "../components/outfits/OutfitFilter";
-import OutfitList from "../components/outfits/OutfitList"
+import OutfitList from "../components/outfits/OutfitList";
 import { UserContext } from "../context/user"
 
 const OutfitContainer = () => {
-    const {user} = useContext(UserContext)
     const [outfits, setOutfits] = useState([]);
     // const [filteredOutfits, setFilteredOutfits] = useState(outfits)
-
+    
     useEffect(() => {
-        fetch(`/api/v1/${user.data.attributes.id}/outfits`)
+        fetch(`/api/v1/${id}/outfits`)
         .then(r => r.json())
-        .then(outfit => setOutfits(outfit))
+        .then(data => setOutfits(data))
         .catch(err => alert(err))  
     }, []);
+    
 
     // const handleSearch = (searchValue) => {
     //     const filteredItems = outfits.filter(outfit => (outfit.name["name"] || outfit.name).toLowerCase().startsWith(searchValue.toLowerCase()))

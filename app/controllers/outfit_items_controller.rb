@@ -11,12 +11,21 @@ class OutfitItemsController < ApplicationController
         # end
     end
 
+    def index_outfit_items #get "/stories" get "prompts/:prompt_id/stories"
+        if params[:outfit_id] 
+            outfit = Outfit.find(params[:outfit_id])
+            render json: outfit.outfititems
+        else # get "/stories"
+            render json: OutfitItemSerializer.new(OutfitItem.all).serializable_hash
+        end
+    end
+
     def show #get "/items/:id"
         render json: serialized_outfititem
     end
 
     def create #post "/items" "users/17/items
-        @outfit_item = current_user.Outfititems.create!(outfititem_params)
+        outfit_item = OutfitItems.create!(outfititem_params)
         #if @item.id
         # item.image.attached?
         # @item.image.attach(params[:user][:image])

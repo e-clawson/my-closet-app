@@ -16,5 +16,5 @@ i2 = Item.create(name:"Dark Blue Floral Top", item_type:"Shirt", size:"L", color
 
 o1 = Outfit.create(name:"casual outfit", description: "good for wearing any old day!", user_id: 1)
 
-io1 = OutfitItem.create(outfit_id: 1, item_id: 1)
-io2 = OutfitItem.create(outfit_id: 1, item_id: 2)
+io1 = OutfitItem.create(item_id: 1, outfit_id: 1, user_id: 1)
+io2 = OutfitItem.create(item_id: 2, outfit_id: 1, user_id: 1)

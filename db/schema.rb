@@ -58,10 +58,12 @@ ActiveRecord::Schema.define(version: 2022_07_22_083336) do
   create_table "outfit_items", force: :cascade do |t|
     t.bigint "outfit_id"
     t.bigint "item_id"
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["item_id"], name: "index_outfit_items_on_item_id"
     t.index ["outfit_id"], name: "index_outfit_items_on_outfit_id"
+    t.index ["user_id"], name: "index_outfit_items_on_user_id"
   end
 
   create_table "outfits", force: :cascade do |t|

@@ -3,6 +3,7 @@ class CreateOutfitItems < ActiveRecord::Migration[6.1]
     create_table :outfit_items do |t|
       t.belongs_to :outfit
       t.belongs_to :item
+      t.belongs_to :user
 
       t.timestamps
     end
