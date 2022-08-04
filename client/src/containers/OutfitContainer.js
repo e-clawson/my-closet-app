@@ -6,17 +6,16 @@ import OutfitList from "../components/outfits/OutfitList";
 import { UserContext } from "../context/user"
 
 const OutfitContainer = () => {
-  const {userId} = useParams()
- 
+    const {user} = useContext(UserContext);
     const [outfits, setOutfits] = useState([]);
     // const [filteredOutfits, setFilteredOutfits] = useState(outfits)
-    
+   
     useEffect(() => {
-        fetch(`/api/v1/${userId}/outfits`)
-        .then(r => r.json())
-        .then(outfit => setOutfits(outfit))
-        .catch(err => alert(err))  
-    }, []);
+      fetch(`/api/v1/${user.data.attributes.id}/outfits`)
+      .then(r => r.json())
+      .then(outfit => setOutfits(outfit))
+      .catch(err => alert(err))
+  }, []);
     
 
     // const handleSearch = (searchValue) => {
