@@ -1,18 +1,19 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import ItemList from "../components/items/ItemList";
 import styled from "styled-components";
-import { ItemFilter } from "../components/items/ItemFilter";
-
+// import { ItemFilter } from "../components/items/ItemFilter";\
+import { UserContext } from "../context/user"
 
 const ItemContainer = () => {
+    const {user} = useContext(UserContext)
     const [items, setItems] = useState([]);
-    const [filteredItems, setFilteredItems] = useState(items)
+    // const [filteredItems, setFilteredItems] = useState(items)
 
     useEffect(() => {
-        fetch("/api/v1/items")
+        fetch(`/api/v1/${user.data.attributes.id}/items`)
         .then(r => r.json())
-        .then(data => setItems(data.data.map(p => p.attributes)))
-        .catch(err => alert(err))  
+        .then(item => setItems(item))
+        .catch(err => alert(err))
     }, []);
 
     // const handleSearch = (searchValue) => {

@@ -5,12 +5,21 @@ class ItemsController < ApplicationController
     def index #get "/items" get "outfit/:outfit_id/items"
         if params[:item_id] #is there a route parameter? AKA do I come from a nested route?
             item = Item.find(params[:item_id])
-            render json: user.items
+            render json: @user.items
         else # get "/items"
             render json: ItemSerializer.new(Item.all).serializable_hash
         end
     end
 
+    def index_items #get "/stories" get "prompts/:prompt_id/stories"
+        if params[:user_id] 
+            user = User.find(params[:user_id])
+            render json: user.items
+        else # get "/stories"
+            render json: ItemSerializer.new(Item.all).serializable_hash
+        end
+    end
+    
     def show #get "/items/:id"
         render json: serialized_item
     end

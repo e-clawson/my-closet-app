@@ -2,7 +2,7 @@ import {useState} from 'react'
 import {useHistory} from 'react-router-dom'
 // import { Button, Input, FormField, Label } from "../../styles";
 
-const NewItemForm2 = ({handleError}) => {
+const NewItemForm2 = ({user, handleError}) => {
     const [item, setItem] = useState ({
         name: "", 
         itemType: "", 
@@ -25,7 +25,7 @@ const NewItemForm2 = ({handleError}) => {
             alert("Please fill out all the fields, thank you!!!")
         }
    
-        fetch("http://localhost:4000/api/v1/items", {
+        fetch(`http://localhost:4000/api/v1/${user}/items`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

@@ -11,18 +11,22 @@ Rails.application.routes.draw do
       get "/me", to: "users#show"
       post "/login", to: "sessions#create"
       delete "/logout", to: "sessions#destroy"
+      get ":user_id/items", to: "items#index_items"
 
+      resources :outfits 
+      get ":user_id/outfits", to: "outfits#show"
+      post ":user_id/outfits", to: "outfits#create"
 
       resources :items
-        delete "/items/:id", to: "items#destroy"
-        get "/:user_id/items", to: "items#index"
-      # resources :outfits, only: [:index, :create]
-      resources :outfits do 
-        resources :outfit_items, only: [:index, :create]
-      end
-      # Need to figure out how to create routes for item_outfits
-      # (and what routes I need for item_outfits)
-    
+      post ":user_id/items", to: "items#create"
+
+      resources :outfit_items
+      get ":user_id/outfit_items", to: "outfit_items#show"
+      post ":user_id/outfititems", to: "outfits_items#create"
+
+      
+  
+   
     end
   end
 end

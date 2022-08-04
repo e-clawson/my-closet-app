@@ -2,16 +2,17 @@ class OutfitsController < ApplicationController
     skip_before_action :authorized!, only: [:index]
     before_action :find_outfit, only: [:show, :update, :destroy]
 
-    def index #get "/outfitss" get "outfit/:outfit_id/items"
+    def index #get "/outfits" get "outfit/:outfit_id/items"
         if params[:outfit_id] #is there a route parameter? AKA do I come from a nested route?
             outfit = Outfit.find(params[:outfit_id])
-            render json: user.outfits
+            render json: outfit.outfit_items
         else # get "/outfits"
             render json: OutfitSerializer.new(Outfit.all).serializable_hash
         end
     end
 
     def show #get "/outfits/:id"
+        @current_user
         render json: serialized_outfit
     end
 

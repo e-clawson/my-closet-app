@@ -1,14 +1,14 @@
 import {useState} from "react"
 import { useHistory } from "react-router-dom"
 
-const EditItemForm = ({ handleUpdate, handleError}) => {
+const EditItemForm = ({itemObj, handleUpdate, handleError}) => {
     const [item, setItem] = useState({
-        name: "",
-        item_type: "",
-        size: "",
-        color: "",
-        description: "",
-        image: null, 
+        name: itemObj.name,
+        item_type: itemObj.item_type,
+        size: itemObj.size,
+        color: itemObj.color,
+        description: itemObj.description
+        // image: null, 
     });
 
     const history = useHistory() 
@@ -22,16 +22,16 @@ const EditItemForm = ({ handleUpdate, handleError}) => {
 
     const handleSubmit = e => {
         e.preventDefault()
-        if ([item.name, item.item_type, item.size, item.color, item.description, item.image].some(val => val.trim() === "")) {
-            alert("You must fill in all the information please!")
+        if ([item.name, item.item_type, item.size, item.color, item.description].some(val => val.trim() === "")) {
+            alert("Please fill in all the information!")
         }
 
-       fetch(`http://localhost:4000/api/v1/items/${item.id}`, {
+       fetch(`http://localhost:4000/api/v1/items/${itemObj.id}`, {
            method: "PATCH",
            headers: {
                "Content-Type": "application/json"
            },
-           body: JSON.stringify({name: item.name, item_type: item.item_type, size: item.size, color: item.color, description: item.description, image: item.image})
+           body: JSON.stringify({name: item.name, item_type: item.item_type, size: item.size, color: item.color, description: item.description})
        })
        .then((resp) => {
             if (resp.status === 201) {
@@ -79,8 +79,8 @@ const EditItemForm = ({ handleUpdate, handleError}) => {
                 <input onChange={handleChange} type="text" name="color" value={item.color} required/><br />
                 <label htmlFor="description">Description</label>
                 <input onChange={handleChange} type="text" name="description" value={item.description} required/><br />
-                <label htmlFor="image">Image</label>
-                <input onChange={handleChange} type="file" name="image" accept="image/png, image/jpeg" value={item.image} /><br />
+                {/* <label htmlFor="image">Image</label>
+                <input onChange={handleChange} type="file" name="image" accept="image/png, image/jpeg" value={item.image} /><br /> */}
                 <input type="submit" value="Update Item" />
             </form>
         </>

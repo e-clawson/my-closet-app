@@ -16,6 +16,9 @@ import OutfitContainer from "../containers/OutfitContainer"
 import OutfitForm from "./outfits/OutfitForm";
 import OutfitList from "./outfits/OutfitList";
 import NewItemForm2 from "./items/NewItemForm2";
+import OutfitItemContainer from "../containers/OutfitItemContainer"
+import ItemCard from "./items/ItemCard";
+import ItemContainer from "../containers/ItemContainer";
 
 
 function App() {
@@ -48,6 +51,7 @@ function App() {
             </Route>
             <Route path="/outfits">
               <OutfitContainer />
+              <OutfitItemContainer />
             </Route>
             <Route path="/outfits/:outfitId/items">
               <OutfitList />
