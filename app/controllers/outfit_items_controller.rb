@@ -14,7 +14,7 @@ class OutfitItemsController < ApplicationController
     def index_outfit_items #get "/stories" get "prompts/:prompt_id/stories"
         if params[:outfit_id] 
             outfit = Outfit.find(params[:outfit_id])
-            render json: outfit.outfititems
+            render json: outfit.outfit_items, include: :item 
         else # get "/stories"
             render json: OutfitItemSerializer.new(OutfitItem.all).serializable_hash
         end
