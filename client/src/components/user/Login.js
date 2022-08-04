@@ -143,11 +143,11 @@ return (
                   buttonText="Login"
                   onSuccess={responseGoogle}
                   onFailure={responseGoogle}
-                  // cookiePolicy={'single_host_origin'}
+                  cookiePolicy={'single_host_origin'}
                 /> */}
-              <div>
+              {/* <div>
                 <GoogleLogin height="10" width="500px" backgroundColor="#4285f4" clientId="781784725438-7rjsrk7bn41r6cpif9h55ur6u0cep7d5.apps.googleusercontent.com" access="offline" scope="email profile" onSuccess={responseGoogle} onFailure={responseGoogle}/>
-              </div>
+              </div> */}
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">

@@ -8,7 +8,6 @@ import { ItemFilter } from '../items/ItemFilter';
 
 const Profile = () => {
     const {user} = useContext(UserContext)
-    console.log(user)
     if (!user?.data) return <Redirect to="/login" />
   
     return (

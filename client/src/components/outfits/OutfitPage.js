@@ -1,6 +1,5 @@
 import {useState, useEffect} from "react"
 import {Link, useParams, useLocation, useHistory} from "react-router-dom"
-import OutfitList from "../outfits/OutfitList"
 import styled from "styled-components";
 import "./Outfit.css"
 import NewItemForm2 from "../items/NewItemForm2";
@@ -20,14 +19,15 @@ const OutfitPage = ({outfit, handleError}) => {
             .then(resp => resp.json())
             .then(outfit => {
               setOutfitObj(outfit)
-              setOutfitItems(outfitItems)
+              setOutfitItems(outfit.outfit_items)
             })
         }
     }, [outfit, outfitId]);
+    console.log(outfit)
 
-    const addNewItem = (itemObj) => {
-      setOutfitItems(currentItems => [itemObj, ...currentItems])
-    }
+    // const addNewOutfit = (outfitObj) => {
+    //   setOutfitItems(currentItems => [itemObj, ...currentItems])
+    // }
 
     const handleUpdate = (updatedOutfitObj) => {
     //   e.preventDefault()
@@ -63,19 +63,9 @@ return (
                 <h4>OUtfit Description: {finalOutfit.description}</h4>
             </div>
         </Wrapper>
-        <br />
         <div>
             <OutfitItemList outfitItems={outfitItems} />
         </div>
-        <Wrapper>
-        <div>
-            <hr />
-            {location.pathname !== "/outfits" ? (<>
-            <NewItemForm2 addNewItem={addNewItem} outfitId={finalOutfit.id} />
-            <hr />
-            </>) : null }
-        </div>
-        </Wrapper>
    </>
   )
 

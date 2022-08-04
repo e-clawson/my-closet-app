@@ -5,17 +5,15 @@ import { Redirect } from 'react-router-dom';
 import OutfitContainer from '../../containers/OutfitContainer';
 import styled from 'styled-components';
 import { ItemFilter } from '../items/ItemFilter';
+import OutfitPage from '../outfits/OutfitPage';
 
-const Outfits = () => {
+const OutfitItemPage = () => {
     const {user} = useContext(UserContext)
     if (!user?.data) return <Redirect to="/login" />
   
     return (
     <div> 
-      <Wrapper>
-        <h1>{user.data.attributes.first_name}'s Outfits</h1>
-      </Wrapper>
-      <OutfitContainer />
+      <OutfitPage />
     </div>
   )
 }
@@ -26,4 +24,4 @@ const Wrapper = styled.header`
   padding: 8px;
 `;
 
-export default Outfits;
+export default OutfitItemPage;

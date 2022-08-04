@@ -11,7 +11,7 @@ class OutfitItemsController < ApplicationController
         # end
     end
 
-    def index_outfit_items #get "/stories" get "prompts/:prompt_id/stories"
+    def index_outfit_items #get 
         if params[:outfit_id] 
             outfit = Outfit.find(params[:outfit_id])
             render json: outfit.outfit_items

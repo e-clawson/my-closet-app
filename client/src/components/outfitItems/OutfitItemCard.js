@@ -13,13 +13,14 @@ const OutfitItemCard = ({outfitItem, handleError}) => {
 
     useEffect(() => {   
         if (!outfitItem) {
-            fetch(`/api/v1/${outfit.id}/${id}`)
+            fetch(`http://localhost:4000/api/v1/${outfit.id}/outfititems`)
             .then(resp => resp.json())
             .then(outfitItem => {
               setOutfitItemObj(outfitItem)
             })
         }
     }, [outfitItem, id]);
+    console.log(outfitItem)
 
     const handleUpdate = (updatedOutfitItemObj) => {
         // e.preventDefault()
@@ -41,15 +42,13 @@ const OutfitItemCard = ({outfitItem, handleError}) => {
     if (!finalOutfitItem) return <h1>Loading...</h1>
 
     return (
-        <div className= "item-card">
-            <h2>Item: {outfitItem.name}</h2>
-            <h4>Type: {outfitItem.item_type}</h4>
-            <h4>Size: {outfitItem.size}</h4>
-            <h4>Color: {outfitItem.color}</h4>
-            <h4>Description: {outfitItem.description}</h4>
-            <button>Add to Outfit</button>
-            <button>Edit</button>
-            <button>Delete</button>
+        <div className= "outfitItem-card">
+            <h2>Item: {outfit.outfititem.name}</h2>
+            <h4>Type: {outfit.outfititem.item_type}</h4>
+            <h4>Size: {outfit.outfititem.size}</h4>
+            <h4>Color: {outfit.outfititem.color}</h4>
+            <h4>Description: {outfit.outfititem.description}</h4>
+            <button name="delete" id="delete-btn" onClick={handleClick}>Delete</button>
         </div>
     )
 

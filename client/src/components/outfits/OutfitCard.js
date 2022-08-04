@@ -10,34 +10,34 @@ const OutfitCard = ({outfit, handleError}) => {
     const [editMode, setEditMode] = useState(false);
     const history = useHistory()
 
-    useEffect(() => {   
-        if (!outfit) {
-            fetch(`/api/v1/outfits/${id}`)
-            .then(resp => resp.json())
-            .then(outfit => {
-              setOutfitObj(outfit)
-            })
-        }
-    }, [outfit, id]);
+    // useEffect(() => {   
+    //     if (!outfit) {
+    //         fetch(`/api/v1/outfits/${id}`)
+    //         .then(resp => resp.json())
+    //         .then(outfit => {
+    //           setOutfitObj(outfit)
+    //         })
+    //     }
+    // }, [outfit, id]);
 
-    const handleUpdate = (updatedOutfitObj) => {
-        // e.preventDefault()
-        setEditMode(false)
-        setOutfitObj(updatedOutfitObj)
-      }
+    // const handleUpdate = (updatedOutfitObj) => {
+    //     // e.preventDefault()
+    //     setEditMode(false)
+    //     setOutfitObj(updatedOutfitObj)
+    //   }
 
-    const handleClick = (e) => { 
-        if (e.target.name === "delete") {
-          fetch(`/api/v1/outfits/${id}`, {    method: "DELETE"
-          })
-          .then(() => history.push("/outfits"))
-        } else {
-          setEditMode(true)
-        }
-       }
+    // const handleClick = (e) => { 
+    //     if (e.target.name === "delete") {
+    //       fetch(`/api/v1/outfits/${id}`, {    method: "DELETE"
+    //       })
+    //       .then(() => history.push("/outfits"))
+    //     } else {
+    //       setEditMode(true)
+    //     }
+    //    }
 
-    const finalOutfit = outfit ? outfit : outfitObj
-    if (!finalOutfit) return <h1>Loading...</h1>
+    // const finalOutfit = outfit ? outfit : outfitObj
+    // if (!finalOutfit) return <h1>Loading...</h1>
 
     // return (
     //     <div className= "item-card">
@@ -54,14 +54,14 @@ const OutfitCard = ({outfit, handleError}) => {
 
     return (
         <div className= "outfit-card">
-          {!editMode ? <>
-            <h3>Name: <Link to={`/outfits/${finalOutfit.id}`}>{outfit.name}</Link></h3>
+          {/* {!editMode ? <> */}
+            <h3>Name: <Link to={`/${outfit.id}/outfititems`}>{outfit.name}</Link></h3>
             <h4>Description: {outfit.description}</h4>
-            {location.pathname !== "/outfits" ? <>
+            {/* {location.pathname !== "/outfits" ? <>
               <button name="edit-mode" id="edit-btn" onClick={handleClick}>Edit</button>
               <button name="delete" id="delete-btn" onClick={handleClick}>Delete</button>
-            </> : null}
-            </> : <EditOutfitForm handleError={handleError} outfitObj={finalOutfit} handleUpdate={handleUpdate}/>}
+            </> : null} */}
+            {/* </> : <EditOutfitForm handleError={handleError} outfitObj={finalOutfit} handleUpdate={handleUpdate}/>} */}
         </div>
       )
 }

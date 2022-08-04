@@ -12,16 +12,16 @@ class SessionsController < ApplicationController
         end
     end
 
-    def omniauth
-        # facebook and google create action
-        @user = User.from_omniauth(auth)
-        if user.id
-            session[:user_id] = user.id
-            render json: UserSerializer.new(user), status: :created
-         else
-            render json: {error: user.errors.full_messages.to_sentence}, status: :unauthorized
-         end
-      end
+    # def omniauth
+    #     # facebook and google create action
+    #     @user = User.from_omniauth(auth)
+    #     if user.id
+    #         session[:user_id] = user.id
+    #         render json: UserSerializer.new(user), status: :created
+    #      else
+    #         render json: {error: user.errors.full_messages.to_sentence}, status: :unauthorized
+    #      end
+    #   end
 
 
     def create
