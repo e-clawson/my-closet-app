@@ -5,16 +5,17 @@ import styled from "styled-components";
 import { UserContext } from "../context/user"
 
 const OutfitItemContainer = () => {
-    const {user} = useContext(UserContext)
-    const [outfitItems, setOutfitItems] = useState([]);
+    // const {user} = useContext(UserContext)
+    // const [outfitItems, setOutfitItems] = useState([]);
     // const [filteredOutfitItems, setFilteredOutfitItems] = useState(outfitItems)
 
-    useEffect(() => {
-        fetch(`/api/v1/${user.data.attributes.id}/outfit_items`)
-        .then(r => r.json())
-        .then(outfitItem => setOutfitItems(outfitItem))
-        .catch(err => alert(err))  
-    }, []);
+    // useEffect(() => {
+    //     fetch(`/api/v1/${user.data.attributes.id}/outfit_items`)
+    //     .then(r => r.json())
+    //     .then(outfitItem => setOutfitItems(outfitItem))
+    //     .catch(err => alert(err))  
+    // }, []);
+    // console.log(outfitItems)
 
     // const handleSearch = (searchValue) => {
     //     const filteredOutfitItems = outfitItems.filter(outfitItem => (outfitItem.name["name"] || outfitItem.name).toLowerCase().startsWith(searchValue.toLowerCase()))
@@ -30,7 +31,7 @@ const OutfitItemContainer = () => {
         <ItemFilter handleSearch={handleSearch} />
         </Wrapper> */}
         <br/>
-        <OutfitItemList outfitItems={outfitItems} />
+        <OutfitItemList />
     </>
 
   )

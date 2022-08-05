@@ -22,24 +22,23 @@ const OutfitItemList = ({outfitItems, handleError}) => {
     
     useEffect(() => {
         if (!outfitItems) {
-            fetch(`http://localhost:4000/api/v1/outfits/${outfitId}`)
+            fetch(`http://localhost:4000/api/v1/outfits/${outfitId}/`)
             .then(resp => resp.json())
             .then(outfitItemList => setOutfitItemList(outfitItemList))
         }
     }, []);
+    console.log(outfitItemList)
 
     // useEffect(() => {   
     //     if (!outfitItems) {
     //         fetch(`/api/v1/outfits/${outfitId}`)
     //         .then(resp => resp.json())
     //         .then(outfitItems => {
-    //           setOutfitItems(outfitItems)
-    //           setOutfitItemList(outfitItemList)
+    //           setOutfitItemList(outfitItems)
     //         })
     //     }
-    // }, [outfitItems, outfitItemList]);
+    // }, [outfitItems]);
     // console.log(outfitItems)
-    // console.log(outfitItemList)
 
     if (!outfitItems) return <h2>There are no items for this outfit!</h2>
     const finalOutfitItemList = outfitItems ? outfitItems : outfitItemList

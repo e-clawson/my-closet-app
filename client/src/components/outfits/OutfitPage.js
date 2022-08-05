@@ -4,6 +4,7 @@ import styled from "styled-components";
 import "./Outfit.css"
 import NewItemForm2 from "../items/NewItemForm2";
 import OutfitItemList from "../outfitItems/OutfitItemList";
+import OutfitItemContainer from "../../containers/OutfitItemContainer";
 
 const OutfitPage = ({outfit, handleError}) => {
     const {outfitId} = useParams()
@@ -19,7 +20,7 @@ const OutfitPage = ({outfit, handleError}) => {
             .then(resp => resp.json())
             .then(outfit => {
               setOutfitObj(outfit)
-              setOutfitItems(outfit.outfit_items)
+              setOutfitItems(outfitItems)
             })
         }
     }, [outfit, outfitId]);
@@ -29,21 +30,21 @@ const OutfitPage = ({outfit, handleError}) => {
     //   setOutfitItems(currentItems => [itemObj, ...currentItems])
     // }
 
-    const handleUpdate = (updatedOutfitObj) => {
-    //   e.preventDefault()
-      setEditMode(false)
-      setOutfitObj(updatedOutfitObj)
-    }
+    // const handleUpdate = (updatedOutfitObj) => {
+    // //   e.preventDefault()
+    //   setEditMode(false)
+    //   setOutfitObj(updatedOutfitObj)
+    // }
 
-    const handleClick = (e) => { 
-      if (e.target.name === "delete") {
-        fetch(`http://localhost:4000/api/v1/outfits/${outfitObj.id}`, 
-        {    method: "DELETE"})
-        .then(() => history.push("/outfits"))
-      } else {
-        setEditMode(true)
-      }
-     }
+    // const handleClick = (e) => { 
+    //   if (e.target.name === "delete") {
+    //     fetch(`http://localhost:4000/api/v1/outfits/${outfitObj.id}`, 
+    //     {    method: "DELETE"})
+    //     .then(() => history.push("/outfits"))
+    //   } else {
+    //     setEditMode(true)
+    //   }
+    //  }
 
     const finalOutfit = outfit ? outfit : outfitObj
     if (!finalOutfit) return <h1>Loading...</h1>
@@ -60,11 +61,11 @@ return (
         <Wrapper>
             <div className= "outfit-card">
                 <h3>Outfit Name: {finalOutfit.name}</h3>
-                <h4>OUtfit Description: {finalOutfit.description}</h4>
+                <h4>Outfit Description: {finalOutfit.description}</h4>
             </div>
         </Wrapper>
         <div>
-            <OutfitItemList outfitItems={outfitItems} />
+            <OutfitItemContainer />
         </div>
    </>
   )
