@@ -16,7 +16,8 @@ import {useState, useEffect} from "react"
 
 
 const OutfitItemList = ({outfitItems, handleError}) => {
-    const [outfitItemList, setOutfitItemList] = useState(null)
+    const [outfitItemList, setOutfitItemList] = useState(null);
+    // const [outfitItems, setOutfitItems] = useState(null);
     const {outfitId} = useParams()
     
     useEffect(() => {
@@ -26,14 +27,29 @@ const OutfitItemList = ({outfitItems, handleError}) => {
             .then(outfitItemList => setOutfitItemList(outfitItemList))
         }
     }, []);
-    console.log(outfitItemList)
+
+    // useEffect(() => {   
+    //     if (!outfitItems) {
+    //         fetch(`/api/v1/outfits/${outfitId}`)
+    //         .then(resp => resp.json())
+    //         .then(outfitItems => {
+    //           setOutfitItems(outfitItems)
+    //           setOutfitItemList(outfitItemList)
+    //         })
+    //     }
+    // }, [outfitItems, outfitItemList]);
+    // console.log(outfitItems)
+    // console.log(outfitItemList)
 
     if (!outfitItems) return <h2>There are no items for this outfit!</h2>
     const finalOutfitItemList = outfitItems ? outfitItems : outfitItemList
+
     const renderOutfitItems = finalOutfitItemList?.map(outfitItem => <OutfitItemCard key={outfitItem.id} outfitItem={outfitItem}/>)
+    
     
     return (
         <div style = {{display:'flex', flexWrap:'wrap'}}>{renderOutfitItems}</div>
+        
     )
 }
 

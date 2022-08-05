@@ -1,6 +1,7 @@
 import "./OutfitItem.css"
 import {useState, useEffect} from "react"
 import {Link, useParams, useLocation, useHistory} from "react-router-dom"
+import OutfitItemList from "./OutfitItemList"
 // import EditOutfitForm from "./EditOutfitForm"
 
 const OutfitItemCard = ({outfitItem, handleError}) => {
@@ -43,11 +44,11 @@ const OutfitItemCard = ({outfitItem, handleError}) => {
 
     return (
         <div className= "outfitItem-card">
-            <h2>Item: {outfit.outfititem.name}</h2>
-            <h4>Type: {outfit.outfititem.item_type}</h4>
-            <h4>Size: {outfit.outfititem.size}</h4>
-            <h4>Color: {outfit.outfititem.color}</h4>
-            <h4>Description: {outfit.outfititem.description}</h4>
+            <h2>Item: {outfit.outfit_item.name}</h2>
+            <h4>Type: {outfit.outfit_item.item_type}</h4>
+            <h4>Size: {outfit.outfit_item.size}</h4>
+            <h4>Color: {outfit.outfit_item.color}</h4>
+            <h4>Description: {outfit.outfit_item.description}</h4>
             <button name="delete" id="delete-btn" onClick={handleClick}>Delete</button>
         </div>
     )
