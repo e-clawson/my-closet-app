@@ -16,7 +16,6 @@ const OutfitContainer = () => {
       .then(outfit => setOutfits(outfit))
       .catch(err => alert(err))
   }, []);
-  console.log(outfits)
 
     // const handleSearch = (searchValue) => {
     //     const filteredItems = outfits.filter(outfit => (outfit.name["name"] || outfit.name).toLowerCase().startsWith(searchValue.toLowerCase()))

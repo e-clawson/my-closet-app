@@ -15,12 +15,12 @@ const OutfitItemCard = ({outfitItem, handleError}) => {
         if (!outfitItem) {
             fetch(`http://localhost:4000/api/v1/${outfit.id}/outfititems`)
             .then(resp => resp.json())
-            .then(outfitItem => {
-              setOutfitItemObj(outfitItem)
+            .then(outfitItemObj => {
+              setOutfitItemObj(outfitItemObj)
             })
         }
-    }, [outfitItem, id]);
-    console.log(outfitItem)
+    }, [outfitItemObj, id]);
+    console.log(outfitItemObj)
 
     const handleUpdate = (updatedOutfitItemObj) => {
         // e.preventDefault()

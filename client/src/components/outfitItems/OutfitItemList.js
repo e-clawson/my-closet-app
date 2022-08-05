@@ -17,25 +17,16 @@ import {useState, useEffect} from "react"
 
 const OutfitItemList = ({outfitItems, handleError}) => {
     const [outfitItemList, setOutfitItemList] = useState(null)
-    const {outfitId} = useParams
+    const {outfitId} = useParams()
     
     useEffect(() => {
         if (!outfitItems) {
             fetch(`http://localhost:4000/api/v1/outfits/${outfitId}`)
-            .then(resp => {
-                if (resp.status === 200) {
-                    resp.json()
-                    .then(outfitItems => setOutfitItemList(outfitItems))
-                } 
-                // else {
-                //     resp.json()
-                //     .then(errorObj => handleError(errorObj.error))
-                // }
-            })
-            .catch(error => handleError(error))
+            .then(resp => resp.json())
+            .then(outfitItemList => setOutfitItemList(outfitItemList))
         }
-    }, [outfitItems, handleError])
-    console.log(outfitItems)
+    }, []);
+    console.log(outfitItemList)
 
     if (!outfitItems) return <h2>There are no items for this outfit!</h2>
     const finalOutfitItemList = outfitItems ? outfitItems : outfitItemList
