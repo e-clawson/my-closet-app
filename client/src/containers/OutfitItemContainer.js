@@ -1,19 +1,19 @@
-import { useState, useEffect, useContext } from "react"
+import { useState, useEffect, useContext} from "react"
+import { useParams } from "react-router-dom";
 import OutfitItemList from "../components/outfitItems/OutfitItemList";
 import styled from "styled-components";
 // import { ItemFilter } from "../components/items/ItemFilter";
 import { UserContext } from "../context/user"
 
-const OutfitItemContainer = () => {
-    // const {user} = useContext(UserContext)
+const OutfitItemContainer = ({outfitItems}) => {
+    const {outfitId} = useParams
     // const [outfitItems, setOutfitItems] = useState([]);
-    // const [filteredOutfitItems, setFilteredOutfitItems] = useState(outfitItems)
+    const [filteredOutfitItems, setFilteredOutfitItems] = useState(outfitItems)
 
     // useEffect(() => {
-    //     fetch(`/api/v1/${user.data.attributes.id}/outfit_items`)
+    //     fetch(`http://localhost:4000/api/v1/outfits/${outfitId}/`)
     //     .then(r => r.json())
-    //     .then(outfitItem => setOutfitItems(outfitItem))
-    //     .catch(err => alert(err))  
+    //     .then(data => setOutfitItems(data.data.map(p => p.attributes)))
     // }, []);
     // console.log(outfitItems)
 
@@ -31,7 +31,7 @@ const OutfitItemContainer = () => {
         <ItemFilter handleSearch={handleSearch} />
         </Wrapper> */}
         <br/>
-        <OutfitItemList />
+        <OutfitItemList outfitItems = {outfitItems} />
     </>
 
   )

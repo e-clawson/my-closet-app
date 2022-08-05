@@ -15,19 +15,23 @@ import {useState, useEffect} from "react"
 // export default OutfitItemList;
 
 
-const OutfitItemList = ({outfitItems, handleError}) => {
+const OutfitItemList = ({outfitItem, handleError}) => {
     const [outfitItemList, setOutfitItemList] = useState(null);
     // const [outfitItems, setOutfitItems] = useState(null);
+    const [items, setItems] = useState([]);
     const {outfitId} = useParams()
     
     useEffect(() => {
-        if (!outfitItems) {
+        if (!outfitItem) {
             fetch(`http://localhost:4000/api/v1/outfits/${outfitId}/`)
             .then(resp => resp.json())
-            .then(outfitItemList => setOutfitItemList(outfitItemList))
-        }
-    }, []);
-    console.log(outfitItemList)
+            .then( outfitItems => {
+                setOutfitItemList(outfitItems)
+                setItems(outfitItems.items)
+              })
+          }
+      }, [outfitItem, outfitId]);
+    // console.log(outfitItem)
 
     // useEffect(() => {   
     //     if (!outfitItems) {
@@ -40,8 +44,8 @@ const OutfitItemList = ({outfitItems, handleError}) => {
     // }, [outfitItems]);
     // console.log(outfitItems)
 
-    if (!outfitItems) return <h2>There are no items for this outfit!</h2>
-    const finalOutfitItemList = outfitItems ? outfitItems : outfitItemList
+    if (!outfitItem) return <h2>There are no items for this outfit!</h2>
+    const finalOutfitItemList = outfitItem ? outfitItem : outfitItemList
 
     const renderOutfitItems = finalOutfitItemList?.map(outfitItem => <OutfitItemCard key={outfitItem.id} outfitItem={outfitItem}/>)
     

@@ -10,6 +10,7 @@ const NewItemForm2 = ({user, handleError}) => {
         size: "", 
         color: "",
         description: "",
+        image: "",
     });
     const history = useHistory()
 
@@ -26,12 +27,12 @@ const NewItemForm2 = ({user, handleError}) => {
             alert("Please fill out all the fields, thank you!!!")
         }
    
-        fetch(`http://localhost:4000/api/v1/${user}/items`, {
+        fetch(`http://localhost:4000/api/v1/${user.id}/items`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({name: item.name, item_type: item.itemType, size: item.size, color: item.color, description: item.description})
+            body: JSON.stringify({name: item.name, item_type: item.itemType, size: item.size, color: item.color, description: item.description, image: item.image})
         })
         .then((resp) => {
             if (resp.status === 201) {
@@ -59,8 +60,8 @@ const NewItemForm2 = ({user, handleError}) => {
                 <input onChange={handleChange} type="text" name="color" id="color" value={item.color} required/><br /><br />
                 <label htmlFor="description">Description</label>
                 <input onChange={handleChange} type="text" name="description" id="description" value={item.description} required/><br /><br />
-                {/* <label htmlFor="image_uri">image_uri</label> */}
-                {/* <input onChange={handleChange} type="text" name="image" id="image" value={item.image} required/><br /><br /> */}
+                <label htmlFor="image">image_uri</label>
+                <input onChange={handleChange} type="text" name="image" id="image" value={item.image} required/><br /><br />
                 <input type="submit" value="Create" />
             </form>
             </Container>

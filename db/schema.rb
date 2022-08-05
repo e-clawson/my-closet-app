@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 2022_07_22_083336) do
     t.string "size"
     t.string "color"
     t.string "description"
+    t.string "image"
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

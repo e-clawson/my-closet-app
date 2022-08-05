@@ -18,33 +18,11 @@ const OutfitPage = ({outfit, handleError}) => {
         if (!outfit) {
             fetch(`/api/v1/outfits/${outfitId}`)
             .then(resp => resp.json())
-            .then(outfit => {
-              setOutfitObj(outfit)
-              setOutfitItems(outfitItems)
-            })
+            .then(outfit => setOutfitObj(outfit))
+            .catch(err => alert(err))
         }
     }, [outfit, outfitId]);
-    console.log(outfit)
-
-    // const addNewOutfit = (outfitObj) => {
-    //   setOutfitItems(currentItems => [itemObj, ...currentItems])
-    // }
-
-    // const handleUpdate = (updatedOutfitObj) => {
-    // //   e.preventDefault()
-    //   setEditMode(false)
-    //   setOutfitObj(updatedOutfitObj)
-    // }
-
-    // const handleClick = (e) => { 
-    //   if (e.target.name === "delete") {
-    //     fetch(`http://localhost:4000/api/v1/outfits/${outfitObj.id}`, 
-    //     {    method: "DELETE"})
-    //     .then(() => history.push("/outfits"))
-    //   } else {
-    //     setEditMode(true)
-    //   }
-    //  }
+    console.log(outfitItems)
 
     const finalOutfit = outfit ? outfit : outfitObj
     if (!finalOutfit) return <h1>Loading...</h1>
@@ -65,7 +43,7 @@ return (
             </div>
         </Wrapper>
         <div>
-            <OutfitItemContainer />
+            <OutfitItemContainer outfitItems = {finalOutfit.outfit_items}/>
         </div>
    </>
   )

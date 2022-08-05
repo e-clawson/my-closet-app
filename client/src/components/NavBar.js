@@ -82,7 +82,7 @@ const Logo = styled.h1`
   align-items: center;
   padding: 8px;
   font-size: 3rem;
-  color: deeppink;
+  color: purple;
   margin: 0;
   line-height: 1;
 
