@@ -21,16 +21,15 @@ const OutfitItemList = ({outfitItem, handleError}) => {
     const [items, setItems] = useState([]);
     const {outfitId} = useParams()
     
-    useEffect(() => {
-        if (!outfitItem) {
-            fetch(`http://localhost:4000/api/v1/outfits/${outfitId}/`)
-            .then(resp => resp.json())
-            .then( outfitItems => {
-                setOutfitItemList(outfitItems)
-                setItems(outfitItems.items)
-              })
-          }
-      }, [outfitItem, outfitId]);
+    // useEffect(() => {
+    //     if (!outfitItem) {
+    //         fetch(`http://localhost:4000/api/v1/${outfitId}/outfititems`)
+    //         .then(resp => resp.json())
+    //         .then( outfitItems => {
+    //             setOutfitItemList(outfitItems)
+    //           })
+    //       }
+    //   }, [outfitItem, outfitId]);
     // console.log(outfitItem)
 
     // useEffect(() => {   

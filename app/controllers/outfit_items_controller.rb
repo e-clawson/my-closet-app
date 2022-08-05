@@ -21,8 +21,10 @@ class OutfitItemsController < ApplicationController
     end
 
     def show #get "/items/:id"
-        render json: serialized_outfititem
+        
+
     end
+
 
     def create #post "/items" "users/17/items
         outfit_item = OutfitItems.create!(outfititem_params)

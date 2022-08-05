@@ -12,18 +12,18 @@ import Profile from "./user/Profile";
 import Signup from "./user/Signup";
 // import ItemForm from "./items/NewItemForm";
 // import { GoogleOAuthProvider } from '@react-oauth/google';
-import OutfitContainer from "../containers/OutfitContainer"
+// import OutfitContainer from "../containers/OutfitContainer"
 import OutfitForm from "./outfits/OutfitForm";
-import OutfitList from "./outfits/OutfitList";
+// import OutfitList from "./outfits/OutfitList";
 import NewItemForm2 from "./items/NewItemForm2";
-import OutfitItemContainer from "../containers/OutfitItemContainer"
-import ItemCard from "./items/ItemCard";
-import ItemContainer from "../containers/ItemContainer";
+// import OutfitItemContainer from "../containers/OutfitItemContainer"
+// import ItemCard from "./items/ItemCard";
+// import ItemContainer from "../containers/ItemContainer";
 import OutfitPage from "./outfits/OutfitPage";
 import Outfits from "./outfits/Outfits";
-import OutfitItemPage from "./outfitItems/OutfitItemPage";
-import OutfitItemCard from "./outfitItems/OutfitItemCard";
-import OutfitItemList from "./outfitItems/OutfitItemList";
+// import OutfitItemPage from "./outfitItems/OutfitItemPage";
+// import OutfitItemCard from "./outfitItems/OutfitItemCard";
+// import OutfitItemList from "./outfitItems/OutfitItemList";
 
 
 function App() {

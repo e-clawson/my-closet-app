@@ -10,8 +10,6 @@ const OutfitPage = ({outfit, handleError}) => {
     const {outfitId} = useParams()
     const location = useLocation()
     const [outfitObj, setOutfitObj] = useState(null);
-    const [editMode, setEditMode] = useState(false);
-    const [outfitItems, setOutfitItems] = useState([]);
     const history = useHistory()
     
     useEffect(() => {   
@@ -22,7 +20,7 @@ const OutfitPage = ({outfit, handleError}) => {
             .catch(err => alert(err))
         }
     }, [outfit, outfitId]);
-    console.log(outfitItems)
+    console.log(outfitObj)
 
     const finalOutfit = outfit ? outfit : outfitObj
     if (!finalOutfit) return <h1>Loading...</h1>
@@ -43,7 +41,7 @@ return (
             </div>
         </Wrapper>
         <div>
-            <OutfitItemContainer outfitItems = {finalOutfit.outfit_items}/>
+            <OutfitItemList outfitItems = {outfitObj.outfit_items}/>
         </div>
    </>
   )

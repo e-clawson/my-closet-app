@@ -13,6 +13,7 @@ aiden = User.create(first_name: "Aiden", last_name: "Baker", password:"123456", 
 
 i1 = Item.create(name:"Black Skinny Jeans", item_type:"Pants", size:"14", color:"black", description:"My favorite Jeans!", user_id: 1)
 i2 = Item.create(name:"Dark Blue Floral Top", item_type:"Shirt", size:"L", color:"Navy Blue", description:"Sleeveless navy blue top with a red floral pattern", user_id: 1)
+i3 = Item.create(name:"Flats", item_type:"Shoes", size:"10", color:"Cream", description:"Cream colored flats with elastic trim and gold end casings. Goes well with any outfit!", image: "public/Images/shoes.jpg", user_id: 1)
 
 o1 = Outfit.create(name:"casual outfit", description: "good for wearing any old day!", user_id: 1)
 

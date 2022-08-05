@@ -5,8 +5,7 @@ import OutfitItemList from "./OutfitItemList"
 // import EditOutfitForm from "./EditOutfitForm"
 
 const OutfitItemCard = ({outfitItem, handleError}) => {
-    const {id} = useParams()
-    const {outfit} = useParams
+    const {outfitId} = useParams
     const location = useLocation()
     const [outfitItemObj, setOutfitItemObj] = useState(null);
     const [editMode, setEditMode] = useState(false);
@@ -14,13 +13,13 @@ const OutfitItemCard = ({outfitItem, handleError}) => {
 
     useEffect(() => {   
         if (!outfitItem) {
-            fetch(`http://localhost:4000/api/v1/${outfit.id}/outfititems`)
+            fetch(`http://localhost:4000/api/v1/${outfitId}/outfititems`)
             .then(resp => resp.json())
             .then(outfitItemObj => {
               setOutfitItemObj(outfitItemObj)
             })
         }
-    }, [outfitItemObj, id]);
+    }, [outfitItemObj]);
     console.log(outfitItemObj)
 
     const handleUpdate = (updatedOutfitItemObj) => {
@@ -31,7 +30,7 @@ const OutfitItemCard = ({outfitItem, handleError}) => {
 
     const handleClick = (e) => { 
         if (e.target.name === "delete") {
-          fetch(`http://localhost:4000/api/v1/outfitItems/${id}`, {    method: "DELETE"
+          fetch(`http://localhost:4000/api/v1/outfitItems`, {    method: "DELETE"
           })
           .then(() => history.push("/outfitItems"))
         } else {
@@ -44,11 +43,11 @@ const OutfitItemCard = ({outfitItem, handleError}) => {
 
     return (
         <div className= "outfitItem-card">
-            <h2>Item: {outfit.outfit_item.name}</h2>
-            <h4>Type: {outfit.outfit_item.item_type}</h4>
-            <h4>Size: {outfit.outfit_item.size}</h4>
-            <h4>Color: {outfit.outfit_item.color}</h4>
-            <h4>Description: {outfit.outfit_item.description}</h4>
+            <h2>Item: {outfitItem.outfit_item.name}</h2>
+            <h4>Type: {outfitItem.outfit_item.item_type}</h4>
+            <h4>Size: {outfitItem.outfit_item.size}</h4>
+            <h4>Color: {outfitItem.outfit_item.color}</h4>
+            <h4>Description: {outfitItem.outfit_item.description}</h4>
             <button name="delete" id="delete-btn" onClick={handleClick}>Delete</button>
         </div>
     )

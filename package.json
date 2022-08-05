@@ -5,6 +5,7 @@
     "@mui/icons-material": "^5.8.4",
     "@mui/material": "^5.9.1",
     "@react-oauth/google": "^0.2.6",
+    "gapi-script": "^1.2.0",
     "react-router-dom": "^6.3.0",
     "styled-components": "^5.3.5"
   }

@@ -15,6 +15,15 @@ class User < ApplicationRecord
             u.email = response[:info][:email]
             u.password = SecureRandom.hex(15)
         end
+        binding.pry
     end
+
+    # def self.from_omniauth(auth)
+    #     where(email: auth.info.email).first_or_initialize do |user|
+    #       user.first_name = auth.info.name
+    #       user.email = auth.info.email
+    #       user.password = SecureRandom.hex
+    #     end
+    #   end
 
 end
