@@ -19,13 +19,21 @@ function AuthPage() {
       });
     }
 
-    gapi.load('client:auth2', start);
+    // gapi.load('client:auth2', start);
+    gapi.load('client:auth2', () => {
+        window.gapi.client.init({
+            clientId: "781784725438-7rjsrk7bn41r6cpif9h55ur6u0cep7d5.apps.googleusercontent.com",
+            plugin_name: "chat",
+            scope: 'email'
+        })
+    });
   }, []);
-
 
   // **you can access the token like this**
   // const accessToken = gapi.auth.getToken().access_token;
   // console.log(accessToken);
+
+ 
 
   const onSuccess = response => {
     console.log('SUCCESS', response)
@@ -42,7 +50,7 @@ function AuthPage() {
       const requestOptions = ({
           method: 'GET',
           headers: {
-          //     // 'Authorization': `Bearer ${response.Zi.accessToken}`,
+              'Authorization': `Bearer`,
               'Content-Type': 'application/json',
           //     // 'access_token': `${response.Zi.accessToken}`
           },

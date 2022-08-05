@@ -1,29 +1,29 @@
 class SessionsController < ApplicationController
     skip_before_action :authorized!, only: [:create, :destroy, :omniauth]
 
-    # def omniauth
-    #     # auth = {email: params["Lu"]["Bv"], uid: params["profileObj"]["googleId"], provider: params["provider"]}
-    #     user = User.from_omniauth(request.env['omniauth.auth'])
-    #     if user.valid?
-    #       session[:user_id] = user.id
-    #       render json: UserSerializer.new(user), status: :created
-    #     else
-    #       render json: {error: user.errors.full_messages.to_sentence}, status: :unauthorized
-    #     end
-    # end
-
     def omniauth
-        @user = User.find_or_create_by(email: auth["info"]["email"]) do |user|
-          user.name= auth["info"]["first_name"]
-          user.password= SecureRandom.hex(8)
-        end
-        if @user && @user.id
-          session[:user_id] = @user.id
-          redirect_to custom_path
+        # auth = {email: params["Lu"]["Bv"], uid: params["profileObj"]["googleId"], provider: params["provider"]}
+        user = User.from_omniauth(request.env['omniauth.auth'])
+        if user.valid?
+          session[:user_id] = user.id
+          render json: UserSerializer.new(user), status: :created
         else
-          redirect_to another_path
+          render json: {error: user.errors.full_messages.to_sentence}, status: :unauthorized
         end
-      end  
+    end
+
+    # def omniauth
+    #     @user = User.find_or_create_by(email: auth["info"]["email"]) do |user|
+    #       user.name= auth["info"]["first_name"]
+    #       user.password= SecureRandom.hex(8)
+    #     end
+    #     if @user && @user.id
+    #       session[:user_id] = @user.id
+    #       redirect_to custom_path
+    #     else
+    #       redirect_to another_path
+    #     end
+    #   end  
     
 
     # def omniauth

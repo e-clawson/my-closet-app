@@ -21,6 +21,7 @@ import NewItemForm2 from "./items/NewItemForm2";
 // import ItemContainer from "../containers/ItemContainer";
 import OutfitPage from "./outfits/OutfitPage";
 import Outfits from "./outfits/Outfits";
+import { googleLogout } from "@react-oauth/google";
 // import OutfitItemPage from "./outfitItems/OutfitItemPage";
 // import OutfitItemCard from "./outfitItems/OutfitItemCard";
 // import OutfitItemList from "./outfitItems/OutfitItemList";
@@ -28,10 +29,26 @@ import Outfits from "./outfits/Outfits";
 
 function App() {
   const {getCurrentUser, user} = useContext(UserContext)
+
+  function handleCallbackResponse(response) {
+
+  }
   
   useEffect(() => {
         getCurrentUser()
   }, [])
+  // useEffect(() =>{
+  //   //*global google*//
+  //   google.accounts.id.initialize({
+  //     client_id: "781784725438-7rjsrk7bn41r6cpif9h55ur6u0cep7d5.apps.googleusercontent.com",
+  //     callback: handleCallbackResponse
+  //   })
+  //   google.accounts.id.renderButton(
+  //     document.getElementById("signInDiv"),
+  //     {theme: "outline", size: "large"}
+  //   )
+
+  // }, [])
 
   return (
     <div className="App">
