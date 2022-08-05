@@ -59,6 +59,7 @@ const ItemCard = ({item, handleError}) => {
         <div className= "item-card">
             {!editMode ? <>
               <h3>Name: {item.name}</h3>
+              <img src={item.image} alt={item.name} />
               <h4>Type: {item.item_type}</h4>
               <h4>Size: {item.size}</h4>
               <h4>Color: {item.color}</h4>
