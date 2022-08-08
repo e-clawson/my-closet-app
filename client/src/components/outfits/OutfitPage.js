@@ -13,13 +13,13 @@ const OutfitPage = ({outfit, handleError}) => {
     const history = useHistory()
     
     useEffect(() => {   
-        if (!outfit) {
+        if (!outfitObj && outfitId) {
             fetch(`/api/v1/outfits/${outfitId}`)
             .then(resp => resp.json())
             .then(outfit => setOutfitObj(outfit))
             .catch(err => alert(err))
         }
-    }, [outfit, outfitId]);
+    }, [outfitObj, outfitId]);
     console.log(outfitObj)
 
     const finalOutfit = outfit ? outfit : outfitObj

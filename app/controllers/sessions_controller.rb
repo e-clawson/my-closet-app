@@ -9,6 +9,7 @@ class SessionsController < ApplicationController
           render json: UserSerializer.new(user), status: :created
         else
           render json: {error: user.errors.full_messages.to_sentence}, status: :unauthorized
+          #if no validations, the else will just return an empty array because it won't have any errors to turn into messages
         end
     end
 

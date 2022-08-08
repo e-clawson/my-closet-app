@@ -7,12 +7,13 @@ MyClosetApp is an API designed to help users organize and store collections of i
 While using MyClosetApp, users can: 
     - Log into/signup for the app
     - View a list of all of their closet items
-    - Add/edit/delete those items (including photos of items) *struggles with deployment - mvp - external links 
+    - Add/edit/delete those items (including photos of items) 
+    <!-- *struggles with deployment - mvp - external links 
     - Compile items into an outfit and view outfits they’ve already made 
     - Edit/delete an outfit 
     - Compile outfits into a collection
     - View/add to/edit/delete collections
-    (Stretch) - Favorite outfits, items, and collections and view lists of favorites 
+    (Stretch) - Favorite outfits, items, and collections and view lists of favorites  -->
 
 This project was created to satisfy the Phase 5 requirements for Flatiron School's Online, Part-Time Software Engineering program. Those requirements are as follows: 
 
@@ -30,9 +31,9 @@ To view a blog post I wrote about the app please follow this link:
 
 LINK TO BLOG POST GOES HERE 
 
-To view a video walkthough of the app, please follow this link: 
+<!-- To view a video walkthough of the app, please follow this link: 
 
-LINK TO VIDEO WALKTHROUGH GOES HERE 
+LINK TO VIDEO WALKTHROUGH GOES HERE  --> 
 
 ## Acknowledgements and Additional Information 
 
@@ -96,3 +97,9 @@ https://pragmaticstudio.com/tutorials/using-active-storage-in-rails
 * Deployment instructions
 
 * other 
+
+
+- display many to many somehow 
+- full crud to work for delete and update without refresh 
+- validatipns - display errors
+- get something new working 

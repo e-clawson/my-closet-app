@@ -1,5 +1,5 @@
 import {useState} from "react"
-import { useHistory } from "react-router-dom"
+import { useHistory, useLocation } from "react-router-dom"
 
 const EditItemForm = ({itemObj, handleUpdate, handleError}) => {
     const [item, setItem] = useState({
@@ -35,12 +35,9 @@ const EditItemForm = ({itemObj, handleUpdate, handleError}) => {
        })
        .then((resp) => {
             if (resp.status === 201) {
-                resp.json()
-                .then(data => handleUpdate(data))
                 history.push("/profile")
             } else {
-                resp.json()
-                .then(errorObj => handleError(errorObj.error))
+                resp.json().then(errorObj => handleError(errorObj.error))
             }
         })
         .catch(err => handleError(err.message))

@@ -9,6 +9,7 @@ class Item < ApplicationRecord
     # has_one_attached :attachment
 
     #image validations
+    #more than presence - uniqueness - display errors 
     # validate :acceptable_image
     # validate :image, content_type: [:png, :jpg, :jpeg], size: { less_than: 1.megabytes , message: 'must be smaller than 1 MB' }
     # validate :attachment, content_type: { in: 'application/pdf', message: 'must be a .png, .jpg, or .jpeg file type' }

@@ -1,5 +1,5 @@
 import { useEffect, useContext } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, useHistory } from "react-router-dom";
 // import { Link } from "react-router-dom";
 import { UserContext } from "../context/user";
 import NavBar from "./NavBar";
@@ -26,17 +26,17 @@ import { googleLogout } from "@react-oauth/google";
 // import OutfitItemCard from "./outfitItems/OutfitItemCard";
 // import OutfitItemList from "./outfitItems/OutfitItemList";
 
-
 function App() {
   const {getCurrentUser, user} = useContext(UserContext)
+  
+  // function handleCallbackResponse(response) {
 
-  function handleCallbackResponse(response) {
-
-  }
+  // }
   
   useEffect(() => {
         getCurrentUser()
   }, [])
+
   // useEffect(() =>{
   //   //*global google*//
   //   google.accounts.id.initialize({
@@ -52,7 +52,7 @@ function App() {
 
   return (
     <div className="App">
-      <Router>
+      <Router >
         <Notification/>
         <NavBar />
           <Switch>

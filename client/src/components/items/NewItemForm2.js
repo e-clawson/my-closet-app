@@ -38,7 +38,6 @@ const NewItemForm2 = ({user, handleError}) => {
         .then((resp) => {
             if (resp.status === 201) {
                  history.push("/profile")
-                 console.log(item)
             } else {
              resp.json().then(errorObj => handleError(errorObj.error))
             }

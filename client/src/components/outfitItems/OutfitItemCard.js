@@ -43,11 +43,11 @@ const OutfitItemCard = ({outfitItem, handleError}) => {
 
     return (
         <div className= "outfitItem-card">
-            <h2>Item: {outfitItem.outfit_item.name}</h2>
-            <h4>Type: {outfitItem.outfit_item.item_type}</h4>
-            <h4>Size: {outfitItem.outfit_item.size}</h4>
-            <h4>Color: {outfitItem.outfit_item.color}</h4>
-            <h4>Description: {outfitItem.outfit_item.description}</h4>
+            <h2>Item: {outfitItem.item_id}</h2>
+            {/* <h4>Type: {outfitItem.}</h4>
+            <h4>Size: {outfitItem.}</h4>
+            <h4>Color: {outfitItem.}</h4>
+            <h4>Description: {outfitItem}</h4> */}
             <button name="delete" id="delete-btn" onClick={handleClick}>Delete</button>
         </div>
     )

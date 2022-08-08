@@ -15,6 +15,7 @@ class OutfitItemsController < ApplicationController
         if params[:outfit_id] 
             outfit = Outfit.find(params[:outfit_id])
             render json: outfit.outfit_items
+            # outfit.outfit_items.for_each - loop through every item and add it to the list - parentobj.chilObj
         else # get "/stories"
             render json: OutfitItemSerializer.new(OutfitItem.all).serializable_hash
         end

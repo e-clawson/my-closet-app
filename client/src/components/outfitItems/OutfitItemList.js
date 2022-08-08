@@ -15,7 +15,7 @@ import {useState, useEffect} from "react"
 // export default OutfitItemList;
 
 
-const OutfitItemList = ({outfitItem, handleError}) => {
+const OutfitItemList = ({outfitItems, handleError}) => {
     const [outfitItemList, setOutfitItemList] = useState(null);
     // const [outfitItems, setOutfitItems] = useState(null);
     const [items, setItems] = useState([]);
@@ -43,8 +43,8 @@ const OutfitItemList = ({outfitItem, handleError}) => {
     // }, [outfitItems]);
     // console.log(outfitItems)
 
-    if (!outfitItem) return <h2>There are no items for this outfit!</h2>
-    const finalOutfitItemList = outfitItem ? outfitItem : outfitItemList
+    if (!outfitItems) return <h2>There are no items for this outfit!</h2>
+    const finalOutfitItemList = outfitItems ? outfitItems : outfitItemList
 
     const renderOutfitItems = finalOutfitItemList?.map(outfitItem => <OutfitItemCard key={outfitItem.id} outfitItem={outfitItem}/>)
     

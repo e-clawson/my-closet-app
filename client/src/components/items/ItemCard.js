@@ -26,14 +26,13 @@ const ItemCard = ({item, handleError}) => {
         // e.preventDefault()
         setEditMode(false)
         setItemObj(updatedItemObj)
-        history.push("/profile")
       }
 
     const handleClick = (e) => { 
         if (e.target.name === "delete") {
           fetch(`/api/v1/items/${item.id}`, {    method: "DELETE"
           })
-          .then(() => history.push("/profile"))
+          // .then(() => history.push("/profile"))
         } else {
           setEditMode(true)
         }
@@ -75,3 +74,5 @@ const ItemCard = ({item, handleError}) => {
 }
 
 export default ItemCard
+
+//clear out whats saved for that item so itwill force a reload 
