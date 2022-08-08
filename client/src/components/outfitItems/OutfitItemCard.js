@@ -28,15 +28,15 @@ const OutfitItemCard = ({outfitItem, handleError}) => {
         setOutfitItemObj(updatedOutfitItemObj)
       }
 
-    const handleClick = (e) => { 
-        if (e.target.name === "delete") {
-          fetch(`http://localhost:4000/api/v1/outfitItems`, {    method: "DELETE"
-          })
-          .then(() => history.push("/outfitItems"))
-        } else {
-          setEditMode(true)
-        }
-       }
+    // const handleClick = (e) => { 
+    //     if (e.target.name === "delete") {
+    //       fetch(`http://localhost:4000/api/v1/outfitItems`, {    method: "DELETE"
+    //       })
+    //       .then(() => history.push("/outfitItems"))
+    //     } else {
+    //       setEditMode(true)
+    //     }
+    //    }
 
     const finalOutfitItem = outfitItem ? outfitItem : outfitItemObj
     if (!finalOutfitItem) return <h1>Loading...</h1>
@@ -48,7 +48,7 @@ const OutfitItemCard = ({outfitItem, handleError}) => {
             <h4>Size: {outfitItem.}</h4>
             <h4>Color: {outfitItem.}</h4>
             <h4>Description: {outfitItem}</h4> */}
-            <button name="delete" id="delete-btn" onClick={handleClick}>Delete</button>
+            {/* <button name="delete" id="delete-btn" onClick={handleClick}>Delete</button> */}
         </div>
     )
 
