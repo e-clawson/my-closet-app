@@ -40,12 +40,12 @@ const OutfitItemCard = ({outfitItem, handleError}) => {
 
     return (
         <div className= "outfitItem-card">
-            <h2>Item: {outfitItem.name}</h2>
-            <h2>{outfitItem.image}</h2>
-            <h2>Type: {outfitItem.type}</h2>
-            <h2>Size: {outfitItem.size}</h2>
-            <h2>Color: {outfitItem.color}</h2>
-            <h2>Description: {outfitItem.description}</h2>
+            <h3>Item: {outfitItem.name}</h3>
+            <h4>{outfitItem.image}</h4>
+            <h4>Type: {outfitItem.type}</h4>
+            <h4>Size: {outfitItem.size}</h4>
+            <h4>Color: {outfitItem.color}</h4>
+            <h4>Description: {outfitItem.description}</h4>
             {/* <h4>Type: {outfitItem.}</h4>
             <h4>Size: {outfitItem.}</h4>
             <h4>Color: {outfitItem.}</h4>

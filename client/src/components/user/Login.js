@@ -43,7 +43,7 @@ export default function SignIn() {
     const success = await login(userObj)
     console.log(success)
     if (success) {
-        history.push("/profile")
+      history.go("/profile")
     }
   };
 
