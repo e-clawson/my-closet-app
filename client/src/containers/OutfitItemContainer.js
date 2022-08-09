@@ -5,10 +5,23 @@ import styled from "styled-components";
 // import { ItemFilter } from "../components/items/ItemFilter";
 import { UserContext } from "../context/user"
 
-const OutfitItemContainer = ({outfitItems}) => {
-    const {outfitId} = useParams
+const OutfitItemContainer = ({finalOutfitId}) => {
+    // const {finalOutfitId} = useParams
     // const [outfitItems, setOutfitItems] = useState([]);
-    const [filteredOutfitItems, setFilteredOutfitItems] = useState(outfitItems)
+    // const [filteredOutfitItems, setFilteredOutfitItems] = useState(outfitItems)
+    const [outfitItemList, setOutfitItemList] = useState([]);
+    const [outfitItems, setOutfitItems] = useState(null);
+    const [items, setItems] = useState([]);
+    useEffect(() => {
+      if (!outfitItems) {
+          fetch(`http://localhost:4000/api/v1/${finalOutfitId}/outfititems`)
+          .then(resp => resp.json())
+          .then( outfitItems => {
+              setOutfitItemList(outfitItems)
+            })
+        }
+    }, [outfitItems, finalOutfitId]);
+    console.log(outfitItemList)
 
     // useEffect(() => {
     //     fetch(`http://localhost:4000/api/v1/outfits/${outfitId}/`)
@@ -31,7 +44,7 @@ const OutfitItemContainer = ({outfitItems}) => {
         <ItemFilter handleSearch={handleSearch} />
         </Wrapper> */}
         <br/>
-        <OutfitItemList outfitItems = {outfitItems} />
+        <OutfitItemList outfitItems = {outfitItemList} />
     </>
 
   )

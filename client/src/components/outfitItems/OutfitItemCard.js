@@ -1,15 +1,11 @@
 import "./OutfitItem.css"
 import {useState, useEffect} from "react"
-import {Link, useParams, useLocation, useHistory} from "react-router-dom"
-import OutfitItemList from "./OutfitItemList"
+import { useParams } from "react-router-dom"
 // import EditOutfitForm from "./EditOutfitForm"
 
 const OutfitItemCard = ({outfitItem, handleError}) => {
     const {outfitId} = useParams
-    const location = useLocation()
     const [outfitItemObj, setOutfitItemObj] = useState(null);
-    const [editMode, setEditMode] = useState(false);
-    const history = useHistory()
 
     useEffect(() => {   
         if (!outfitItem) {
@@ -19,14 +15,15 @@ const OutfitItemCard = ({outfitItem, handleError}) => {
               setOutfitItemObj(outfitItemObj)
             })
         }
-    }, [outfitItemObj]);
-    console.log(outfitItemObj)
+    }, [outfitItem, outfitId]);
+    console.log(outfitItem)
 
-    const handleUpdate = (updatedOutfitItemObj) => {
-        // e.preventDefault()
-        setEditMode(false)
-        setOutfitItemObj(updatedOutfitItemObj)
-      }
+
+    // const handleUpdate = (updatedOutfitItemObj) => {
+    //     // e.preventDefault()
+    //     setEditMode(false)
+    //     setOutfitItemObj(updatedOutfitItemObj)
+    //   }
 
     // const handleClick = (e) => { 
     //     if (e.target.name === "delete") {
@@ -43,7 +40,12 @@ const OutfitItemCard = ({outfitItem, handleError}) => {
 
     return (
         <div className= "outfitItem-card">
-            <h2>Item: {outfitItem.item_id}</h2>
+            <h2>Item: {outfitItem.name}</h2>
+            <h2>{outfitItem.image}</h2>
+            <h2>Type: {outfitItem.type}</h2>
+            <h2>Size: {outfitItem.size}</h2>
+            <h2>Color: {outfitItem.color}</h2>
+            <h2>Description: {outfitItem.description}</h2>
             {/* <h4>Type: {outfitItem.}</h4>
             <h4>Size: {outfitItem.}</h4>
             <h4>Color: {outfitItem.}</h4>

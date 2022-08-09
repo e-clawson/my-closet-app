@@ -14,23 +14,21 @@ import {useState, useEffect} from "react"
 
 // export default OutfitItemList;
 
-
 const OutfitItemList = ({outfitItems, handleError}) => {
-    const [outfitItemList, setOutfitItemList] = useState(null);
+    const [outfitItemList, setOutfitItemList] = useState([]);
     // const [outfitItems, setOutfitItems] = useState(null);
     const [items, setItems] = useState([]);
-    const {outfitId} = useParams()
     
     // useEffect(() => {
-    //     if (!outfitItem) {
-    //         fetch(`http://localhost:4000/api/v1/${outfitId}/outfititems`)
+    //     if (!outfitItems) {
+    //         fetch(`http://localhost:4000/api/v1/${finalOutfitId}/outfititems`)
     //         .then(resp => resp.json())
     //         .then( outfitItems => {
     //             setOutfitItemList(outfitItems)
     //           })
     //       }
-    //   }, [outfitItem, outfitId]);
-    // console.log(outfitItem)
+    //   }, [outfitItems, finalOutfitId]);
+    // console.log(outfitItemList)
 
     // useEffect(() => {   
     //     if (!outfitItems) {

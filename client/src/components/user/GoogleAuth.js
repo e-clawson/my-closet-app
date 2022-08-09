@@ -5,11 +5,12 @@ import env from 'react-dotenv';
 import { gapi } from 'gapi-script';
 import {UserContext} from '../../context/user';
 import { MessageContext } from '../../context/message';
-
+import {useHistory} from 'react-router-dom';
 
 function AuthPage() {  
    const {login, user, setUser} = useContext(UserContext);
    const {setMessage} = useContext(MessageContext);
+   const history = useHistory();
 
   useEffect(() => {
     function start() {
@@ -45,8 +46,8 @@ function AuthPage() {
   //   console.log('SUCESS LOG OUT');
   // };
 
-  const responseGoogle = (response) => {
-      const requestOptions = ({
+  const responseGoogle = async (response) => {
+      const requestOptions = {
           method: 'POST',
           headers: {
               'Authorization': `Bearer`,
@@ -54,12 +55,12 @@ function AuthPage() {
               'access_token': `${response.accessToken}`
           },
           body: JSON.stringify(response),
-      })
-      fetch(`http://localhost:4000/api/v1/auth/google_oauth2/callback`, requestOptions)
+      }
+      fetch(`/api/v1/auth/google_oauth2/callback`, requestOptions)
       .then(res => {
         if (res.ok) {
           res.json().then(data => {
-            setUser({...data.data.attributes, items: data.data.relationships.items.data})
+            setUser({...data.data.attributes})
             setMessage({message: "User successfully logged in", color: "green"})
           })
         }
@@ -69,10 +70,10 @@ function AuthPage() {
           })
         }
       })
-      .catch(err => setMessage({message: err.message, color: "red"}))
-      }
-  
-    if (user) return <Redirect to="/profile" />
+    }
+    console.log(user)
+    if (user) 
+    return <Redirect to="/profile" />
 
   return (
     <div>

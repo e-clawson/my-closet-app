@@ -11,6 +11,7 @@ const OutfitPage = ({outfit, handleError}) => {
     const location = useLocation()
     const [outfitObj, setOutfitObj] = useState(null);
     const history = useHistory()
+    const [items, setItems] = useState([]);
     
     useEffect(() => {   
         if (!outfitObj && outfitId) {
@@ -41,7 +42,7 @@ return (
             </div>
         </Wrapper>
         <div>
-            <OutfitItemList outfitItems = {outfitObj.outfit_items}/>
+            <OutfitItemContainer finalOutfitId = {finalOutfit.id}/>
         </div>
    </>
   )

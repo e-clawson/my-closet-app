@@ -33,8 +33,8 @@ function UserProvider({children}) {
            })
             if (resp.status === 202) {
                 const data = await resp.json()
-                setUser(data)
-                history.push("/profile")
+                setUser({...data.data.attributes})
+                return true
             } else {
                const errorObj = await resp.json()
                setMessage(errorObj.error)

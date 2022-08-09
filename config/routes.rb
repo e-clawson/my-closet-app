@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
       resources :outfits
       post ":user_id/outfits", to: "outfits#create"
+      get "outfits/:outfit_id", to: "outfits#index_outfit_items"
       # get ":outfit_id/outfit_items", to: "outfit#index_outfit_items"
 
       resources :items
@@ -25,7 +26,7 @@ Rails.application.routes.draw do
       get ":user_id/outfit_items", to: "outfit_items#index"
       post ":user_id/outfititems", to: "outfits_items#create"
       get ":outfit_id/outfititems", to: "outfit_items#index_outfit_items"
-      get ":outfit_id/outfititems", to: "outfit_items#show"
+      # get ":outfit_id/outfititems", to: "outfit_items#show"
   
     end
   end

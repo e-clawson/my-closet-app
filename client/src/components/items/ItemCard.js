@@ -18,6 +18,7 @@ const ItemCard = ({item, handleError}) => {
             .then(resp => resp.json())
             .then(item => {
               setItemObj(item)
+              
             })
         }
     }, [item, id]);

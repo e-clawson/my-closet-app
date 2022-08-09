@@ -8,8 +8,8 @@ import { ItemFilter } from '../items/ItemFilter';
 import OutfitPage from '../outfits/OutfitPage';
 
 const OutfitItemPage = () => {
-    const {user} = useContext(UserContext)
-    if (!user?.data) return <Redirect to="/login" />
+    // const {user} = useContext(UserContext)
+    // if (!user?.data) return <Redirect to="/login" />
   
     return (
     <div> 

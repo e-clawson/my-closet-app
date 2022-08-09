@@ -4,6 +4,9 @@ class Item < ApplicationRecord
     has_many :outfit_items
     has_many :outfits, through: :outfit_items
 
+    has_many :entity_roles
+    has_many :notices, through: :entity_roles
+
     #image assoc
     # has_one_attached :image, :dependent => :destroy
     # has_one_attached :attachment
