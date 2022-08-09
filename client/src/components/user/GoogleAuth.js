@@ -57,17 +57,17 @@ function AuthPage() {
       })
       fetch(`http://localhost:4000/api/v1/auth/google_oauth2/callback`, requestOptions)
       .then(res => {
-        // if (res.ok) {
-        //   res.json().then(data => {
-        //     setUser({...data.data.attributes, items: data.data.relationships.items.data})
-        //     setMessage({message: "User successfully logged in", color: "green"})
-        //   })
-        // }
-        // else {
-        //   res.json().then(data => {
-        //     setMessage({message: data.error, color: "red"})
-        //   })
-        // }
+        if (res.ok) {
+          res.json().then(data => {
+            setUser({...data.data.attributes, items: data.data.relationships.items.data})
+            setMessage({message: "User successfully logged in", color: "green"})
+          })
+        }
+        else {
+          res.json().then(data => {
+            setMessage({message: data.error, color: "red"})
+          })
+        }
       })
       .catch(err => setMessage({message: err.message, color: "red"}))
       }

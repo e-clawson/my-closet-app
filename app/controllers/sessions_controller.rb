@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
     # end
 
     def omniauth
-      auth = {first_name: body["Nw"]["profileObj"]["givenName"], last_name: body["Nw"]["profileObj"]["familyName"] email: body["Nw"]["profileObj"]["email"], uid: body["Nw"]["profileObj"]["googleId"], provider: body["provider"]}
+      auth = {first_name: params["profileObj"]["givenName"], last_name: params["profileObj"]["familyName"], email: params["profileObj"]["email"], provider: params["provider"]}
       user = User.from_omniauth(auth)
       if user.id
         session[:user_id] = user.id
