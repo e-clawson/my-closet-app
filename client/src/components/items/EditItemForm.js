@@ -10,8 +10,7 @@ const EditItemForm = ({itemObj, handleUpdate, handleError}) => {
         description: itemObj.description,
         image: itemObj.image
     });
-
-    const history = useHistory() 
+    const history = useHistory()
 
     const handleChange = (e) => {
         setItem({
@@ -37,7 +36,8 @@ const EditItemForm = ({itemObj, handleUpdate, handleError}) => {
             if (resp.status === 201) {
                 history.push("/profile")
             } else {
-                resp.json().then(errorObj => handleError(errorObj.error))
+                resp.json()
+                .then(errorObj => (handleError(errorObj.error)))
             }
         })
         .catch(err => handleError(err.message))

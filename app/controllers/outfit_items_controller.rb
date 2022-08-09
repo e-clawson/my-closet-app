@@ -11,9 +11,21 @@ class OutfitItemsController < ApplicationController
         # end
     end
 
+    # @user = User.find_or_create_by(email: auth["info"]["email"]) do |user|
+    #     #       user.name= auth["info"]["first_name"]
+    #     #       user.password= SecureRandom.hex(8)
+    #     #     end
+    # def index_outfit_items #get
+    #     @outfitItem = OutfitItem.find(params[:outfit_id]) do |outfitItem|
+    #         name = outfitItem.item.name
+    #     end
+    #     render json: @outfitItem
+    # end
+
     def index_outfit_items #get 
         if params[:outfit_id] 
             outfit = Outfit.find(params[:outfit_id])
+            outfitItem = outfit.outfit_items.find_by_id(params[:outfit_item_id]) 
             render json: outfit.outfit_items
             # outfit.outfit_items.for_each - loop through every item and add it to the list - parentobj.chilObj
         else # get "/stories"
@@ -22,10 +34,9 @@ class OutfitItemsController < ApplicationController
     end
 
     def show #get "/items/:id"
-        
+        render json: serialized_outfititem
 
     end
-
 
     def create #post "/items" "users/17/items
         outfit_item = OutfitItems.create!(outfititem_params)
@@ -66,10 +77,15 @@ class OutfitItemsController < ApplicationController
         end
     
         def serialized_outfititem
-            @outfititem.to_json
+            @outfititem.to_json(include: :items)
         end
     
         def outfititem_params
             params.permit(:item_id, :outfit_id)
         end
+
+        def find_outfititem_items
+            @outfititem = OutfitItem.find(params[:id])
+        end
+            
 end

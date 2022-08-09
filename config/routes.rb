@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   scope :api do
     scope :v1 do
-      default_url_options :host => "http://loclhost:4000"
+      default_url_options :host => "http://localhost:4000"
       #will be a get and not post?
       #This route will direct any auth callback response to our SessionsController omniauth action with params[:provider] set to google_oauth2 in this example.
-      get "/auth/:provider/callback", to: "sessions#omniauth"
+      post "/auth/google_oauth2/callback", to: "sessions#omniauth"
 
       resources :users, only: [:update, :destroy] #creating show route manually with a custom route
       post "/signup", to: "users#create"
@@ -25,6 +25,7 @@ Rails.application.routes.draw do
       get ":user_id/outfit_items", to: "outfit_items#index"
       post ":user_id/outfititems", to: "outfits_items#create"
       get ":outfit_id/outfititems", to: "outfit_items#index_outfit_items"
+      get ":outfit_id/outfititems", to: "outfit_items#show"
   
     end
   end
