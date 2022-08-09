@@ -38,7 +38,7 @@ const OutfitItemContainer = ({finalOutfitId}) => {
   return (
     <>
         <Wrapper>
-            <h2>Outfit Items</h2>
+            <h2>Outfit Items:</h2>
         </Wrapper>
         {/* <Wrapper>
         <ItemFilter handleSearch={handleSearch} />

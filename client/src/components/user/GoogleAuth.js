@@ -71,7 +71,7 @@ function AuthPage() {
         }
       })
     }
-    console.log(user)
+
     if (user) 
     return <Redirect to="/profile" />
 

@@ -27,13 +27,14 @@ const ItemCard = ({item, handleError}) => {
         // e.preventDefault()
         setEditMode(false)
         setItemObj(updatedItemObj)
+        history.go("/profile")
       }
 
     const handleClick = (e) => { 
         if (e.target.name === "delete") {
           fetch(`/api/v1/items/${item.id}`, {    method: "DELETE"
           })
-          .then(() => history.push("/profile"))
+          .then(() => history.go("/profile"))
         } else {
           setEditMode(true)
         }

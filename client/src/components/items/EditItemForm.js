@@ -32,14 +32,7 @@ const EditItemForm = ({itemObj, handleUpdate, handleError}) => {
            },
            body: JSON.stringify({name: item.name, item_type: item.item_type, size: item.size, color: item.color, description: item.description, image: item.image})
        })
-       .then((resp) => {
-            if (resp.status === 201) {
-                history.push("/profile")
-            } else {
-                resp.json()
-                .then(errorObj => (handleError(errorObj.error)))
-            }
-        })
+       .then(() =>history.go("/profile"))
         .catch(err => handleError(err.message))
     }
 

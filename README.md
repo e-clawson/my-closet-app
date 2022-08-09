@@ -99,7 +99,7 @@ https://pragmaticstudio.com/tutorials/using-active-storage-in-rails
 * other 
 
 
-- display many to many somehow 
+<!-- - display many to many somehow  -->
 - full crud to work for delete and update without refresh 
 - validatipns - display errors
 - get something new working 
