@@ -41,9 +41,9 @@ export default function SignIn() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const success = await login(userObj)
-    console.log(success)
+
     if (success) {
-      history.go("/profile")
+      console.log(success)
     }
   };
 

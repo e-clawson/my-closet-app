@@ -13,10 +13,13 @@ class User < ApplicationRecord
         puts(response)
         User.find_or_create_by(uid: response[:uid], provider: response[:provider]) do |u|
             u.first_name = response[:info][:first_name]
+            u.last_name = response[:info][:family_name]
             u.email = response[:info][:email]
             u.password = SecureRandom.hex(15)
         end
     end
+
+    
 
     # def self.from_omniauth(auth)
     #     where(email: auth.info.email).first_or_initialize do |user|

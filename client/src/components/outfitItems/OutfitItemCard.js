@@ -42,7 +42,7 @@ const OutfitItemCard = ({outfitItem, handleError}) => {
         <div className= "outfitItem-card">
             <h3>Item: {outfitItem.name}</h3>
             <h4>{outfitItem.image}</h4>
-            <h4>Type: {outfitItem.type}</h4>
+            <h4>Type: {outfitItem.item_type}</h4>
             <h4>Size: {outfitItem.size}</h4>
             <h4>Color: {outfitItem.color}</h4>
             <h4>Description: {outfitItem.description}</h4>

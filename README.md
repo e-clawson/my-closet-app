@@ -100,6 +100,6 @@ https://pragmaticstudio.com/tutorials/using-active-storage-in-rails
 
 
 <!-- - display many to many somehow  -->
-- full crud to work for delete and update without refresh 
-- validatipns - display errors
+<!-- - full crud to work for delete and update without refresh  -->
+- validations - display errors
 - get something new working 

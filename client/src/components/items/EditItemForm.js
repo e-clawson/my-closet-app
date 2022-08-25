@@ -10,7 +10,7 @@ const EditItemForm = ({itemObj, handleUpdate, handleError}) => {
         description: itemObj.description,
         image: itemObj.image
     });
-    const history = useHistory()
+    // const history = useHistory()
 
     const handleChange = (e) => {
         setItem({
@@ -32,8 +32,19 @@ const EditItemForm = ({itemObj, handleUpdate, handleError}) => {
            },
            body: JSON.stringify({name: item.name, item_type: item.item_type, size: item.size, color: item.color, description: item.description, image: item.image})
        })
-       .then(() =>history.go("/profile"))
-        .catch(err => handleError(err.message))
+       .then((resp) => {
+        if (resp.status === 200) {
+            resp.json()
+            .then(data => handleUpdate(data))
+         } else {
+        resp.json()
+        .then(errorObj => {
+            alert(errorObj.error)
+            setItem({name: item.name, item_type: item.item_type, size: item.size, color: item.color, description: item.description, image: item.image})
+        })
+    }
+    })
+    .catch(err => handleError(err.message))    
     }
 
 //     const handleSubmit = event => {

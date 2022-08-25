@@ -50,6 +50,9 @@ const Signup = () => {
             setMessage({message: "User successfully created!", color: "green"})
             history.push("/profile")
         }
+        else {
+          setMessage({message: "Error: User not created"})
+        }
         
         
     }

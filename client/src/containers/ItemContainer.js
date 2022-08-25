@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from "react"
+import {useHistory} from "react-router-dom"
 import ItemList from "../components/items/ItemList";
 import styled from "styled-components";
 // import { ItemFilter } from "../components/items/ItemFilter";\
@@ -7,6 +8,7 @@ import { UserContext } from "../context/user"
 const ItemContainer = () => {
     const {user} = useContext(UserContext);
     const [items, setItems] = useState([]);
+    const history = useHistory()
     // const [filteredItems, setFilteredItems] = useState(items)
 
     useEffect(() => {
@@ -16,11 +18,11 @@ const ItemContainer = () => {
         .catch(err => alert(err))
     }, []);
 
-    // const handleSearch = (searchValue) => {
-    //     const filteredItems = items.filter(item => (item.name["name"] || item.name).toLowerCase().startsWith(searchValue.toLowerCase()))
-    //     setFilteredItems(filteredItems)
-    // }
+  //  history.push("/profile")
 
+    // #this is where I need a callback function to update an item 
+    // delete and update, vaidation handling, something new
+    //try putting the history.push in the useEffect instead? " I did the redirect in the useEffect of my component instead of the async action and it seems to work now."
 
   return (
     <>

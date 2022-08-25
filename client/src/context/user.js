@@ -44,7 +44,7 @@ function UserProvider({children}) {
             }
     }       
 
-    const signup = async(userInfo) => { 
+    const signup = async(userObj) => { 
         try{
             const resp = await fetch("/api/v1/signup", {
                 method: "POST",
@@ -52,7 +52,7 @@ function UserProvider({children}) {
                     "Content-Type": "application/json", 
                     "Accept": "application/json"
                 }, 
-                body: JSON.stringify(userInfo)
+                body: JSON.stringify(userObj)
            })
            if (resp.status === 201) {
                 const data = await resp.json()
@@ -61,8 +61,8 @@ function UserProvider({children}) {
            } else {
                const errorObj = await resp.json()
                setMessage(errorObj.error)
+               console.log(errorObj)
            }
-
         } catch(e) {
                 setMessage(e.message)
             }

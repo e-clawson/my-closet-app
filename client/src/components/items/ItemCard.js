@@ -1,9 +1,10 @@
 import "./Item.css"
-import {useState, useEffect} from "react"
+import {useState, useEffect, useContext} from "react"
 import {useParams, useLocation, useHistory} from "react-router-dom"
 // import ItemForm from './ItemForm'
 // import ItemList from './ItemList'
 import EditItemForm from "./EditItemForm"
+import { UserContext } from "../../context/user"
 
 const ItemCard = ({item, handleError}) => {
     const {id} = useParams()
@@ -11,6 +12,7 @@ const ItemCard = ({item, handleError}) => {
     const [itemObj, setItemObj] = useState(null);
     const [editMode, setEditMode] = useState(false);
     const history = useHistory()
+    const {user} = useContext(UserContext)
 
     useEffect(() => {   
         if (!item) {
@@ -18,59 +20,47 @@ const ItemCard = ({item, handleError}) => {
             .then(resp => resp.json())
             .then(item => {
               setItemObj(item)
-              
             })
         }
     }, [item, id]);
+    console.log(item)
 
     const handleUpdate = (updatedItemObj) => {
         // e.preventDefault()
         setEditMode(false)
         setItemObj(updatedItemObj)
-        history.go("/profile")
       }
 
     const handleClick = (e) => { 
         if (e.target.name === "delete") {
-          fetch(`/api/v1/items/${item.id}`, {    method: "DELETE"
+          fetch(`http://localhost:4000/api/v1/items/${item.id}`, {    method: "DELETE"
           })
-          .then(() => history.go("/profile"))
+          // .then(() => history.push("/profile"))
         } else {
           setEditMode(true)
         }
       }
 
-    const finalItem = item ? item : itemObj
+    const finalItem = itemObj ? itemObj : item
     if (!finalItem) return <h1>Loading...</h1>
-
-    // return (
-    //     <div className= "item-card">
-    //         <h2>Item: {item.name}</h2>
-    //         <h4>Type: {item.item_type}</h4>
-    //         <h4>Size: {item.size}</h4>
-    //         <h4>Color: {item.color}</h4>
-    //         <h4>Description: {item.description}</h4>
-    //         <button>Add to Outfit</button>
-    //         <button>Edit</button>
-    //         <button>Delete</button>
-    //     </div>
-    // )
 
     return (
         <div className= "item-card">
             {!editMode ? <>
-              <h3>Name: {item.name}</h3>
-              <img src={item.image} alt={item.name} />
-              <h4>Type: {item.item_type}</h4>
-              <h4>Size: {item.size}</h4>
-              <h4>Color: {item.color}</h4>
-              <h4>Description: {item.description}</h4>
+              <h3>Name: {finalItem.name}</h3>
+              <img src={finalItem.image} alt={finalItem.name} />
+              <h4>Type: {finalItem.item_type}</h4>
+              <h4>Size: {finalItem.size}</h4>
+              <h4>Color: {finalItem.color}</h4>
+              <h4>Description: {finalItem.description}</h4>
               {/* <h4>Image:   {item.image ? <img src={item.image} alt="Item Image" /> : null}</h4> */}
-              {location.pathname !== "/items" ? <>
+              {location.pathname !== "/items" && parseInt(user?.data.id) === finalItem.user_id ?  <>
                 <button name="edit-mode" id="edit-btn" onClick={handleClick}>Edit</button>
                 <button name="delete" id="delete-btn" onClick={handleClick}>Delete</button>
               </> : null}
               </> : <EditItemForm handleError={handleError} itemObj={finalItem} handleUpdate={handleUpdate}/>}
+              {location.pathname !== "/items" ? (<>
+              </>) : null } 
          </div>
       )
 }

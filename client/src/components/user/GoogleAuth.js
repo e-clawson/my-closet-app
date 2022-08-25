@@ -8,7 +8,7 @@ import { MessageContext } from '../../context/message';
 import {useHistory} from 'react-router-dom';
 
 function AuthPage() {  
-   const {login, user, setUser} = useContext(UserContext);
+   const {user, setUser} = useContext(UserContext);
    const {setMessage} = useContext(MessageContext);
    const history = useHistory();
 
@@ -18,6 +18,7 @@ function AuthPage() {
         clientId: "781784725438-7rjsrk7bn41r6cpif9h55ur6u0cep7d5.apps.googleusercontent.com",
         scope: 'email',
       });
+      console.log(start)
     }
 
     // gapi.load('client:auth2', start);
@@ -71,9 +72,6 @@ function AuthPage() {
         }
       })
     }
-
-    if (user) 
-    return <Redirect to="/profile" />
 
   return (
     <div>
