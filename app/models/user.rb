@@ -9,13 +9,13 @@ class User < ApplicationRecord
    validates :email, presence: true, uniqueness: true, format: {with: /\A(?<email>[^@\s]+)@((?<domain_name>[-a-z0-9]+)\.(?<domain>[a-z]{2,}))\z/i}
    validates :password, length: {in: 6..25}
 
-    def self.from_omniauth(response)
-        puts(response)
-        User.find_or_create_by(uid: response[:uid], provider: response[:provider]) do |u|
-            u.first_name = response[:info][:first_name]
-            u.last_name = response[:info][:family_name]
-            u.email = response[:info][:email]
-            u.password = SecureRandom.hex(15)
+    def self.from_omniauth(auth)
+        puts(auth)
+        self.find_or_create_by(provider: auth.fetch(:provider), email: auth.fetch(:email)) do |u|
+            u.first_name = auth.fetch(:first_name)
+            u.last_name = auth.fetch(:last_name)
+            u.email = auth.fetch(:email)
+            u.password = SecureRandom.hex(10)
         end
     end
 

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { useHistory, Redirect } from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -15,12 +15,11 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { UserContext } from '../../context/user';
 import { MessageContext } from '../../context/message';
-// import GoogleLogin from 'react-google-login';
-import GoogleAuth from './GoogleAuth';
-
+import GoogleLogin from 'react-google-login';
+// import GoogleAuth from './GoogleAuth';
+import { gapi } from 'gapi-script';
 
 const theme = createTheme();
-
 
 export default function SignIn() {
   const {login, user, setUser} = useContext(UserContext);
@@ -40,41 +39,57 @@ export default function SignIn() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const success = await login(userObj)
-
-    if (success) {
-      console.log(success)
+    const didItWork = await login(userObj)
+    if (didItWork) {
+        history.push("/profile")
     }
   };
 
+  useEffect(() => {
+    function start() {
+      gapi.client.init({
+        clientId: "781784725438-7rjsrk7bn41r6cpif9h55ur6u0cep7d5.apps.googleusercontent.com",
+        scope: 'email',
+      });
+      console.log(start)
+    }
 
-  // const responseGoogle = (response) => {
-  //   const requestOptions = ({
-  //       method: 'GET',
-  //       headers: {
-  //       //     // 'Authorization': `Bearer ${response.Zi.accessToken}`,
-  //           'Content-Type': 'application/json',
-  //       //     // 'access_token': `${response.Zi.accessToken}`
-  //       },
-  //       body: JSON.stringify(response),
-  //   });
-  //   fetch(`/api/v1/auth/google_oauth2/callback`, requestOptions)
-  //   .then(res => {
-  //     if (res.ok) {
-  //       res.json().then(data => {
-  //         setUser({...data.data.attributes, items: data.data.relationships.items.data})
-  //         setMessage({message: "User successfully logged in", color: "green"})
-  //         console.log(data)
-  //       })
-  //     }
-  //     else {
-  //       res.json().then(data => {
-  //         setMessage({message: data.error, color: "red"})
-  //       })
-  //     }
-  //   })
-  //   .catch(err => setMessage({message: err.message, color: "red"}))
-  //   }
+    gapi.load('client:auth2', start);
+    // gapi.load('client:auth2', () => {
+    //     window.gapi.client.init({
+    //         clientId: "781784725438-7rjsrk7bn41r6cpif9h55ur6u0cep7d5.apps.googleusercontent.com",
+    //         plugin_name: "chat",
+    //         scope: 'email'
+    //     })
+    // });
+  }, []);
+
+const responseGoogle = (response) => {
+  const requestOptions = {
+      method: 'POST',
+      headers: {
+          'Authorization': `Bearer`,
+          'Content-Type': 'application/json',
+          'access_token': `${response.accessToken}`
+      },
+      body: JSON.stringify(response),
+  }
+  fetch(`/api/v1/auth/google_oauth2/callback`, requestOptions)
+  .then(res => {
+    if (res.ok) {
+      res.json().then(data => {
+        setUser({...data.data.attributes})
+        setMessage({message: "User successfully logged in", color: "green"})
+      })
+    }
+    else {
+      res.json().then(data => {
+        setMessage({message: data.error, color: "red"})
+      })
+    }
+  })
+  .catch(err => setMessage({message: err.message, color: "red"}))
+}
 
   if (user) return <Redirect to="/profile" />
 
@@ -133,30 +148,15 @@ return (
             >
               Sign In
             </Button>
-            {/* <Button 
-              height="10" width="500px" backgroundColor="#4285f4" 
-              id="g_id_onload"
-              data-client_id="781784725438-7rjsrk7bn41r6cpif9h55ur6u0cep7d5.apps.googleusercontent.com"
-              data-context="signin"
-              data-login_uri="http://localhost:4000/login"
-              data-auto_select="true" > Sign In With Google 
-            </Button> */}
-               {/* <GoogleLogin
-                  clientId="781784725438-7rjsrk7bn41r6cpif9h55ur6u0cep7d5.apps.googleusercontent.com"
-                  buttonText="Login"
-                  onSuccess={responseGoogle}
-                  onFailure={responseGoogle}
-                  cookiePolicy={'single_host_origin'}
-                /> */}
-              {/* <div>
+              <div>
                 <GoogleLogin height="10" width="500px" backgroundColor="#4285f4" clientId="781784725438-7rjsrk7bn41r6cpif9h55ur6u0cep7d5.apps.googleusercontent.com" access="offline" scope="email profile" onSuccess={responseGoogle} onFailure={responseGoogle}/>
-              </div> */}
+              </div>
             <Grid container>
               <Grid item>
                 <Link href="/Signup" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
-              <GoogleAuth />
+              {/* <GoogleAuth /> */}
               </Grid>
             </Grid>
          </Box>

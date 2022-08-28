@@ -35,7 +35,7 @@ const ItemCard = ({item, handleError}) => {
         if (e.target.name === "delete") {
           fetch(`http://localhost:4000/api/v1/items/${item.id}`, {    method: "DELETE"
           })
-          // .then(() => history.push("/profile"))
+          .then(() => history.push("/home"))
         } else {
           setEditMode(true)
         }
