@@ -1,7 +1,7 @@
 import ItemCard from "./ItemCard.js"
 
-const ItemList = ({items}) => {
- const itemCards = items?.map(item => <ItemCard key={item.id} item={item}/>)
+const ItemList = ({items, reload}) => {
+ const itemCards = items?.map(item => <ItemCard key={item.id} item={item} reload={reload}/>)
     
  return (
     <div>

@@ -5,13 +5,15 @@ import {useParams, useLocation, useHistory} from "react-router-dom"
 // import ItemList from './ItemList'
 import EditItemForm from "./EditItemForm"
 import { UserContext } from "../../context/user"
+import { MessageContext } from "../../context/message"
 
-const ItemCard = ({item, handleError}) => {
+const ItemCard = ({item, handleError, reload}) => {
     const {id} = useParams()
     const location = useLocation()
     const [itemObj, setItemObj] = useState(null);
     const [editMode, setEditMode] = useState(false);
     const history = useHistory()
+    const {setMessage} = useContext(MessageContext);
     const {user} = useContext(UserContext)
 
     useEffect(() => {   
@@ -35,7 +37,28 @@ const ItemCard = ({item, handleError}) => {
         if (e.target.name === "delete") {
           fetch(`http://localhost:4000/api/v1/items/${item.id}`, {    method: "DELETE"
           })
-          .then(() => history.push("/home"))
+          .then(res => {
+            if (res.status === 200)  {
+                res.json()
+                .then(data => {
+                    setItemObj(null)
+                    setMessage({message: data.message, status: "Item Successfully Deleted!"})
+                    console.log("item successfully deleted")
+                    console.log(reload)
+                    reload()
+                    history.push("/profile")
+                })
+            }
+            else {
+                res.json()
+                .then(data => {
+                    setItemObj(null)
+                    setMessage({message: data.error, status: "Item Not Deleted!"})
+                    console.log("item not deleted")
+                })
+            }
+        })
+        .catch(err => console.log(err))
         } else {
           setEditMode(true)
         }
@@ -54,7 +77,7 @@ const ItemCard = ({item, handleError}) => {
               <h4>Color: {finalItem.color}</h4>
               <h4>Description: {finalItem.description}</h4>
               {/* <h4>Image:   {item.image ? <img src={item.image} alt="Item Image" /> : null}</h4> */}
-              {location.pathname !== "/items" && parseInt(user?.data.id) === finalItem.user_id ?  <>
+              {location.pathname !== "/items" ?  <>
                 <button name="edit-mode" id="edit-btn" onClick={handleClick}>Edit</button>
                 <button name="delete" id="delete-btn" onClick={handleClick}>Delete</button>
               </> : null}

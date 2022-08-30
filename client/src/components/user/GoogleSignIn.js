@@ -3,7 +3,6 @@ import React, {useEffect} from 'react'
 const GoogleSigninCallback = () => {
     useEffect(() => {
         const responseGoogle = (response) => {
-            debugger
             var token = response.Zi;
             const requestOptions = {
                 method: 'POST',
@@ -14,10 +13,8 @@ const GoogleSigninCallback = () => {
                 },
                 body: JSON.stringify(token)
             }
-            debugger
             fetch(`/api/v1/auth/google_oauth2/callback`, requestOptions)
             .then(response => {
-                debugger
                     // cookies.set('accesstoken', response.headers.get('access-token'), {
                     //     expires: 7
                     // });

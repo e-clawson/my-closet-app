@@ -18,7 +18,12 @@ const ItemContainer = () => {
         .catch(err => alert(err))
     }, []);
 
-  //  history.push("/profile")
+    const reload = () => {
+      fetch(`/api/v1/${user.data.attributes.id}/items`)
+      .then(r => r.json())
+      .then(item => setItems(item))
+      .catch(err => alert(err))
+  };
 
     // #this is where I need a callback function to update an item 
     // delete and update, vaidation handling, something new
@@ -33,7 +38,7 @@ const ItemContainer = () => {
         <ItemFilter handleSearch={handleSearch} />
         </Wrapper> */}
         <br/>
-        <ItemList items={items} />
+        <ItemList items={items} reload={reload}/>
     </>
 
   )
