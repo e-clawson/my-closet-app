@@ -45,24 +45,21 @@ export default function SignIn() {
     }
   };
 
-  useEffect(() => {
     function start() {
       gapi.client.init({
         clientId: "781784725438-7rjsrk7bn41r6cpif9h55ur6u0cep7d5.apps.googleusercontent.com",
         scope: 'email',
       });
-      console.log(start)
     }
 
     gapi.load('client:auth2', start);
-    // gapi.load('client:auth2', () => {
-    //     window.gapi.client.init({
-    //         clientId: "781784725438-7rjsrk7bn41r6cpif9h55ur6u0cep7d5.apps.googleusercontent.com",
-    //         plugin_name: "chat",
-    //         scope: 'email'
-    //     })
-    // });
-  }, []);
+    gapi.load('client:auth2', () => {
+        window.gapi.client.init({
+            clientId: "781784725438-7rjsrk7bn41r6cpif9h55ur6u0cep7d5.apps.googleusercontent.com",
+            plugin_name: "chat",
+            scope: 'email'
+        })
+    });
 
 const responseGoogle = (response) => {
   const requestOptions = {
