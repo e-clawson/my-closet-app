@@ -41,7 +41,7 @@ const OutfitItemCard = ({outfitItem, handleError}) => {
     return (
         <div className= "outfitItem-card">
             <h3>Item: {outfitItem.name}</h3>
-            <h4>{outfitItem.image}</h4>
+            <img src={outfitItem.image} alt={outfitItem.name} />
             <h4>Type: {outfitItem.item_type}</h4>
             <h4>Size: {outfitItem.size}</h4>
             <h4>Color: {outfitItem.color}</h4>
