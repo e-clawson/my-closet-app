@@ -62,7 +62,7 @@ class SessionsController < ApplicationController
             # render json: user, status: :accepted
             render json: UserSerializer.new(user), status: :accepted
         else
-            render json: {error: "Not Authorized"}, status: :unauthorized
+            render json: {error: "Incorrect Sign-in Credentials, Please Retry"}, status: :unauthorized
        end
     end
 

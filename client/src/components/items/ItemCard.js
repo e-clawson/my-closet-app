@@ -42,7 +42,7 @@ const ItemCard = ({item, handleError, reload}) => {
                 res.json()
                 .then(data => {
                     setItemObj(null)
-                    setMessage({message: data.message, status: "Item Successfully Deleted!"})
+                    setMessage({message: data.message, status: "Item Successfully Deleted!", color: "green"})
                     console.log("item successfully deleted")
                     console.log(reload)
                     reload()
@@ -53,7 +53,7 @@ const ItemCard = ({item, handleError, reload}) => {
                 res.json()
                 .then(data => {
                     setItemObj(null)
-                    setMessage({message: data.error, status: "Item Not Deleted!"})
+                    setMessage({message: data.error, status: "Item Not Deleted!", color: "red"})
                     console.log("item not deleted")
                 })
             }
@@ -89,5 +89,3 @@ const ItemCard = ({item, handleError, reload}) => {
 }
 
 export default ItemCard
-
-//clear out whats saved for that item so itwill force a reload 

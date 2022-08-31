@@ -40,9 +40,9 @@ function UserProvider({children}) {
                 setUser({...data.data.attributes})
                 return true
             } else {
-               const errorObj = await resp.json()
-               setMessage(errorObj.error)
-               return false
+                const errorObj = await resp.json()
+                setMessage({message: errorObj.error, color: "red"})
+                return false
             }
         } catch(e) {
                 setMessage(e.message)
@@ -66,11 +66,11 @@ function UserProvider({children}) {
                 history.push("/profile")
            } else {
                const errorObj = await resp.json()
-               setMessage(errorObj.error)
-               console.log(errorObj)
+               setMessage({message: errorObj.error, color: "red"})
+               console.log(errorObj.message)
            }
         } catch(e) {
-                setMessage(e.message)
+            setMessage({message: e.message, color: "red"})
             }
     }     
 

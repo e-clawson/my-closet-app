@@ -83,6 +83,7 @@ const responseGoogle = (response) => {
     else {
       res.json().then(data => {
         setMessage({message: data.error, color: "red"})
+        console.log(data.error)
       })
     }
   })

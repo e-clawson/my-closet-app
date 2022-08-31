@@ -43,7 +43,8 @@ const Signup = () => {
     const handleSubmit = e => {
         e.preventDefault()
         if ([userObj.first_name, userObj.last_name, userObj.email, userObj.password, userObj.passwordConfirmation].some(val => val.trim() === "")) {
-            setMessage({message: "You must fill in all the information please!", color: "red"})
+            // setMessage({message: "You must fill in all the information please!", color: "red"})
+            setMessage({message: userObj.error, color: "red"})
         }
         const success = signup({...userObj, password_confirmation: userObj.passwordConfirmation})
         if (success) {
@@ -51,7 +52,7 @@ const Signup = () => {
             history.push("/profile")
         }
         else {
-          setMessage({message: "Error: User not created"})
+          setMessage({message: userObj.message, color: "red"})
         }
         
         
