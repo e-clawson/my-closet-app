@@ -9,7 +9,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 // import FormControlLabel from '@mui/material/FormControlLabel';
 // import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
+// import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
@@ -34,28 +34,25 @@ const Signup = () => {
     const history = useHistory()
 
     const handleChange = ({target: {name, value}}) => {
-        setUserObj({
-            ...userObj,
-            [name]: value
-        })
-    }
+      setUserObj({
+          ...userObj,
+          [name]: value
+      })
+  }
 
-    const handleSubmit = e => {
+    const handleSubmit = (e) => {
         e.preventDefault()
         if ([userObj.first_name, userObj.last_name, userObj.email, userObj.password, userObj.passwordConfirmation].some(val => val.trim() === "")) {
-            // setMessage({message: "You must fill in all the information please!", color: "red"})
             setMessage({message: userObj.error, color: "red"})
         }
         const success = signup({...userObj, password_confirmation: userObj.passwordConfirmation})
         if (success) {
-            setMessage({message: "User successfully created!", color: "green"})
-            history.push("/profile")
+          console.log(userObj)
+          history.push("/profile")
         }
         else {
           setMessage({message: userObj.message, color: "red"})
-          history.push("/signup")
         }
-        
         
     }
     return (
@@ -83,7 +80,7 @@ const Signup = () => {
                       required
                       fullWidth
                       id="first_name"
-                      label="first name"
+                      label="First Name"
                       name="first_name"
                       autoComplete="first name"
                       onChange={handleChange}
@@ -95,7 +92,7 @@ const Signup = () => {
                       required
                       fullWidth
                       id="last_name"
-                      label="last name"
+                      label="Last Name"
                       name="last_name"
                       autoComplete="last name"
                       onChange={handleChange}
@@ -119,7 +116,7 @@ const Signup = () => {
                       required
                       fullWidth
                       name="password"
-                      label="Password"
+                      label="Password: Must be 6 - 24 characters long"
                       type="password"
                       id="password"
                       autoComplete="new-password"
@@ -151,9 +148,9 @@ const Signup = () => {
                 </Button>
                 <Grid container justifyContent="flex-end">
                   <Grid item>
-                    <Link href="/login" variant="body2">
+                    {/* <Link href="/login" variant="body2">
                       Already have an account? Sign in
-                    </Link>
+                    </Link> */}
                   </Grid>
                 </Grid>
               </Box>

@@ -18,7 +18,7 @@ function UserProvider({children}) {
                 setUser({...data.data.attributes})
              } else {
                 const errorObj = await resp.json()
-                setMessage({message: errorObj.error, color: "red"})
+                // setMessage({message: errorObj.error, color: "red"})
              }
         } catch (e) {
             setMessage({message: e.message, color: "red"})
@@ -50,8 +50,8 @@ function UserProvider({children}) {
             }
     }       
 
-    const signup = async(userObj) => { 
-        try{
+    const signup = async (userObj) => { 
+        try {
             const resp = await fetch("/api/v1/signup", {
                 method: "POST",
                 headers: {
@@ -62,14 +62,16 @@ function UserProvider({children}) {
            })
            if (resp.status === 201) {
                 const data = await resp.json()
-                setUser({...data.data.attribues})
-                history.push("/profile")
+                setUser({...data.data.attributes})
+                console.log(userObj)
+                console.log(user)
                 setMessage({message: "New User Created!", color: "green"})
            } else {
                const errorObj = await resp.json()
                setMessage({message: errorObj.error, color: "red"})
-               console.log(errorObj.message)
+                console.log(errorObj.error)
            }
+        
         } catch(e) {
             setMessage({message: e.message, color: "red"})
             }
@@ -85,7 +87,7 @@ function UserProvider({children}) {
              return true
             //  history.push("/login")
         } catch(e) {
-            setMessage(e.message)
+            setMessage({message: e.message, color: "red"})
             return false
         }
     }

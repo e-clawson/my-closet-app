@@ -4,8 +4,8 @@ class Item < ApplicationRecord
     has_many :outfit_items
     has_many :outfits, through: :outfit_items
 
-    has_many :entity_roles
-    has_many :notices, through: :entity_roles
+    # has_many :entity_roles
+    # has_many :notices, through: :entity_roles
 
     #add a validation where you can't delete an item if it is part of an outfit
     

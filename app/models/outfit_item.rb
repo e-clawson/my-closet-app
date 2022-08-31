@@ -2,5 +2,4 @@ class OutfitItem < ApplicationRecord
     belongs_to :item
     belongs_to :outfit
     belongs_to :user
-    # accepts_nested_attributes_for :items, :outfits
 end
