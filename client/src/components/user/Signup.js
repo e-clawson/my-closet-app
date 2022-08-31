@@ -53,6 +53,7 @@ const Signup = () => {
         }
         else {
           setMessage({message: userObj.message, color: "red"})
+          history.push("/signup")
         }
         
         

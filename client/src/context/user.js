@@ -62,8 +62,9 @@ function UserProvider({children}) {
            })
            if (resp.status === 201) {
                 const data = await resp.json()
-                setUser(data)
+                setUser({...data.data.attribues})
                 history.push("/profile")
+                setMessage({message: "New User Created!", color: "green"})
            } else {
                const errorObj = await resp.json()
                setMessage({message: errorObj.error, color: "red"})
@@ -79,7 +80,7 @@ function UserProvider({children}) {
             const resp = await fetch("api/v1/logout", {
                 method: "DELETE", 
             })
-             setMessage("You were successfully logged out")
+             setMessage({message: "You were successfully logged out", color: "green"})
              setUser(null)
              return true
             //  history.push("/login")
