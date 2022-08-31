@@ -81,16 +81,21 @@ https://pragmaticstudio.com/tutorials/using-active-storage-in-rails
 
     to set-up locally run the following: 
     
+    to install dependencies: 
     bundle install
+
+    to create, migrate, and seed the server:
     rails db:create db:migrate db:seed
+
+    to start the server: 
     rails s 
+
+    to install dependencies for the client: 
     npm install --prefix client
 
-<!-- * Database creation
-
-* Database initialization
-
-* How to run the test suite -->
+    to run the page: 
+    cd client
+    npm start
 
 * Services (job queues, cache servers, search engines, etc.)
 
@@ -98,8 +103,6 @@ https://pragmaticstudio.com/tutorials/using-active-storage-in-rails
 
 * other 
 
-
-<!-- - display many to many somehow  -->
-<!-- - full crud to work for delete and update without refresh  -->
+_______________
 - validations - display errors
 - get something new working 

@@ -8,11 +8,11 @@ import { UserProvider } from "./context/user"
 
 ReactDOM.render(
     <BrowserRouter>
-        <MessageProvider>
-          <UserProvider>
-             <App />
-          </UserProvider>
-        </MessageProvider>
+      <MessageProvider>
+        <UserProvider>
+           <App />
+        </UserProvider>
+      </MessageProvider>
     </BrowserRouter>,
   document.getElementById("root")
 );

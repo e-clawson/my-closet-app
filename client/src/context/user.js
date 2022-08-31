@@ -11,17 +11,21 @@ function UserProvider({children}) {
     const {setMessage} = useContext(MessageContext)
 
     const getCurrentUser = useCallback(async () => {  
-            const resp = await fetch( "/api/v1/me" )
-             if ( resp.status === 200) {
-                 const data = await resp.json()
-                 setUser(data)
+        try {
+            const resp = await fetch("/api/v1/me")
+             if (resp.status === 200) {
+                const data = await resp.json()
+                setUser({...data.data.attributes})
              } else {
                 const errorObj = await resp.json()
-                setMessage(errorObj.error)
-            }
+                setMessage({message: errorObj.error, color: "red"})
+             }
+        } catch (e) {
+            setMessage({message: e.message, color: "red"})
+        }
     }, [setMessage])
 
-    const login = async (userInfo) => { 
+    const login = async (userObj) => { 
            try{
             const resp = await fetch("/api/v1/login", {
                 method: "POST",
@@ -29,7 +33,7 @@ function UserProvider({children}) {
                     "Content-Type": "application/json", 
                     "Accept": "application/json"
                 }, 
-                body: JSON.stringify(userInfo)
+                body: JSON.stringify(userObj)
            })
             if (resp.status === 202) {
                 const data = await resp.json()
@@ -38,9 +42,11 @@ function UserProvider({children}) {
             } else {
                const errorObj = await resp.json()
                setMessage(errorObj.error)
+               return false
             }
         } catch(e) {
                 setMessage(e.message)
+                console.log(children)
             }
     }       
 

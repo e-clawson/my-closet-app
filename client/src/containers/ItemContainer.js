@@ -12,14 +12,14 @@ const ItemContainer = () => {
     // const [filteredItems, setFilteredItems] = useState(items)
 
     useEffect(() => {
-        fetch(`/api/v1/${user.data.attributes.id}/items`)
+        fetch(`/api/v1/${user.id}/items`)
         .then(r => r.json())
         .then(item => setItems(item))
         .catch(err => alert(err))
     }, []);
 
     const reload = () => {
-      fetch(`/api/v1/${user.data.attributes.id}/items`)
+      fetch(`/api/v1/${user.id}/items`)
       .then(r => r.json())
       .then(item => setItems(item))
       .catch(err => alert(err))

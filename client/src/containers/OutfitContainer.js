@@ -11,7 +11,7 @@ const OutfitContainer = () => {
     // const [filteredOutfits, setFilteredOutfits] = useState(outfits)
    
     useEffect(() => {
-      fetch(`/api/v1/${user.data.attributes.id}/outfits`)
+      fetch(`/api/v1/${user.id}/outfits`)
       .then(r => r.json())
       .then(outfit => setOutfits(outfit))
       .catch(err => alert(err))

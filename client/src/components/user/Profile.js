@@ -8,12 +8,12 @@ import { ItemFilter } from '../items/ItemFilter';
 
 const Profile = () => {
     const {user} = useContext(UserContext)
-    if (!user?.data) return <Redirect to="/login" />
+    if (!user) return <Redirect to="/login" />
   
     return (
     <div> 
       <Wrapper>
-        <h1>Hello, {user.data.attributes.first_name} {user.data.attributes.last_name}!</h1>
+        <h1>Hello, {user.first_name} {user.last_name}!</h1>
       </Wrapper>
       <ItemContainer />
     </div>

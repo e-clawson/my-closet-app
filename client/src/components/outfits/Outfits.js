@@ -8,12 +8,12 @@ import { ItemFilter } from '../items/ItemFilter';
 
 const Outfits = () => {
     const {user} = useContext(UserContext)
-    if (!user?.data) return <Redirect to="/login" />
+    if (!user) return <Redirect to="/login" />
   
     return (
     <div> 
       <Wrapper>
-        <h1>{user.data.attributes.first_name}'s Outfits</h1>
+        <h1>{user.first_name}'s Outfits</h1>
       </Wrapper>
       <OutfitContainer />
     </div>
