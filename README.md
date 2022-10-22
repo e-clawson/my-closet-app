@@ -22,13 +22,13 @@ This project was created to satisfy the Phase 5 requirements for Flatiron School
     - Implement useContext or Redux.
     - Fully deploy and host your project.
 
-To view a blog post I wrote about the app please follow this link: 
+To view a blog post I wrote about using Dotenv files while working on this app please follow this link: 
 
-LINK TO BLOG POST GOES HERE 
+https://medium.com/@emclawson1/using-dotenv-a-brief-guide-for-ruby-on-rails-c235e94e88b0 
 
 <!-- To view a video walkthough of the app, please follow this link: 
 
-LINK TO VIDEO WALKTHROUGH GOES HERE  --> 
+https://www.youtube.com/watch?v=Ud8k6wROlek
 
 ## Acknowledgements and Additional Information 
 
